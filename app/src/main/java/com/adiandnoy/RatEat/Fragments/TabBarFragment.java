@@ -9,11 +9,12 @@ import android.widget.Button;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.Navigation;
 
 import com.adiandnoy.RatEat.R;
 
-public class TabBarFragment extends Fragment implements View.OnClickListener {
-    Fragment[] tabs = new Fragment[3];
+public class TabBarFragment extends Fragment{
+//    Fragment[] tabs = new Fragment[3];
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -23,26 +24,47 @@ public class TabBarFragment extends Fragment implements View.OnClickListener {
         Button info = view.findViewById(R.id.tabfrag_info_btn);
         Button add = view.findViewById(R.id.tabfrag_add_btn);
 
-        students.setTag(0);
-        info.setTag(1);
-        add.setTag(2);
+        students.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.action_tabBarFragment_to_studentListFragment);
+            }
+        });
 
-        students.setOnClickListener(this);
-        info.setOnClickListener(this);
-        add.setOnClickListener(this);
+        info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.action_tabBarFragment_to_studentInfoFragment);
+            }
+        });
 
-        tabs[0] = new com.adiandnoy.RatEat.Fragments.StudentListFragment();
-        tabs[1] = new com.adiandnoy.RatEat.Fragments.StudentInfoFragment();
-        tabs[2] = new com.adiandnoy.RatEat.Fragments.AddStudentFragment();
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.action_tabBarFragment_to_addStudentFragment);
+            }
+        });
+
+//        students.setTag(0);
+//        info.setTag(1);
+//        add.setTag(2);
+//
+//        students.setOnClickListener(this);
+//        info.setOnClickListener(this);
+//        add.setOnClickListener(this);
+//
+//        tabs[0] = new com.adiandnoy.RatEat.Fragments.StudentListFragment();
+//        tabs[1] = new com.adiandnoy.RatEat.Fragments.StudentInfoFragment();
+//        tabs[2] = new com.adiandnoy.RatEat.Fragments.AddStudentFragment();
         return view;
     }
 
-    @Override
-    public void onClick(View view) {
-        int selected = (int)view.getTag();
-        FragmentManager manager = getFragmentManager();
-        FragmentTransaction tran = manager.beginTransaction();
-        tran.replace(R.id.tabfrag_container,tabs[selected]);
-        tran.commit();
-    }
+//    @Override
+//    public void onClick(View view) {
+//        int selected = (int)view.getTag();
+//        FragmentManager manager = getFragmentManager();
+//        FragmentTransaction tran = manager.beginTransaction();
+//        tran.replace(R.id.tabfrag_container,tabs[selected]);
+//        tran.commit();
+//    }
 }

@@ -1,5 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph">
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/tabBarFragment">
+    <fragment
+        android:id="@+id/tabBarFragment"
+        android:name="com.adiandnoy.RatEat.Fragments.TabBarFragment"
+        android:label="fragment_tab_bar"
+        tools:layout="@layout/fragment_tab_bar" >
+        <action
+            android:id="@+id/action_tabBarFragment_to_studentListFragment"
+            app:destination="@id/studentListFragment" />
+        <action
+            android:id="@+id/action_tabBarFragment_to_studentInfoFragment"
+            app:destination="@id/studentInfoFragment" />
+        <action
+            android:id="@+id/action_tabBarFragment_to_addStudentFragment"
+            app:destination="@id/addStudentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/studentListFragment"
+        android:name="com.adiandnoy.RatEat.Fragments.StudentListFragment"
+        android:label="fragment_student_list"
+        tools:layout="@layout/fragment_student_list" />
+    <fragment
+        android:id="@+id/studentInfoFragment"
+        android:name="com.adiandnoy.RatEat.Fragments.StudentInfoFragment"
+        android:label="fragment_student_info"
+        tools:layout="@layout/fragment_student_info" />
+    <fragment
+        android:id="@+id/addStudentFragment"
+        android:name="com.adiandnoy.RatEat.Fragments.AddStudentFragment"
+        android:label="fragment_add_student"
+        tools:layout="@layout/fragment_add_student" />
 </navigation>

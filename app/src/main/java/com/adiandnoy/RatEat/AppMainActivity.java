@@ -13,13 +13,13 @@ public class AppMainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_app_main);
-
-        final TabBarFragment tabBar = new TabBarFragment();
-        FragmentManager manager = getSupportFragmentManager();
-        FragmentTransaction tran = manager.beginTransaction();
-        tran.add(R.id.appmain_frg_container,tabBar);
-        tran.commit();
+        setContentView(R.layout.fragment_main);
+//
+//        final TabBarFragment tabBar = new TabBarFragment();
+//        FragmentManager manager = getSupportFragmentManager();
+//        FragmentTransaction tran = manager.beginTransaction();
+//        tran.add(R.id.appmain_frg_container,tabBar);
+//        tran.commit();
 
     }
 }
