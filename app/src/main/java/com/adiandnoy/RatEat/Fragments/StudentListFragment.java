@@ -44,7 +44,7 @@ public class StudentListFragment extends Fragment {
         adapter.setOnClickListener(new StudentsAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                Log.d("TAG","row was clicked " + position);
+//                Log.d("TAG","row was clicked " + position);
 
             }
         });

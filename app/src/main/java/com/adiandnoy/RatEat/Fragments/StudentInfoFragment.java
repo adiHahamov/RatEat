@@ -19,14 +19,7 @@ public class StudentInfoFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_student_info, container, false);
-        Button backBtn = view.findViewById(R.id.studentinfofrag_back_btn);
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FragmentManager manager = getFragmentManager();
-                manager.popBackStack();
-            }
-        });
+
         return view;
     }
 }
