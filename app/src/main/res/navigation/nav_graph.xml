@@ -23,15 +23,15 @@
         android:id="@+id/studentListFragment"
         android:name="com.adiandnoy.RatEat.Fragments.DishesListFragment"
         android:label="dishes list"
-        tools:layout="@layout/fragment_student_list" />
+        tools:layout="@layout/fragment_dishes_list" />
     <fragment
         android:id="@+id/studentInfoFragment"
         android:name="com.adiandnoy.RatEat.Fragments.ProfileFragment"
         android:label="dish info"
-        tools:layout="@layout/fragment_student_info" />
+        tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/addStudentFragment"
         android:name="com.adiandnoy.RatEat.Fragments.AddDishFragment"
         android:label="add dish"
-        tools:layout="@layout/fragment_add_student" />
+        tools:layout="@layout/fragment_add_dish" />
 </navigation>

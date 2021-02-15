@@ -1,7 +1,6 @@
 package com.adiandnoy.RatEat.Fragments;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +26,7 @@ public class DishesListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_student_list, container, false);
+        View view =  inflater.inflate(R.layout.fragment_dishes_list, container, false);
         RecyclerView rv = view.findViewById(R.id.studentlistfrag_list);
 
         rv.hasFixedSize();
