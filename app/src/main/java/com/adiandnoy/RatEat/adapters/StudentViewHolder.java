@@ -18,7 +18,7 @@ public class StudentViewHolder extends RecyclerView.ViewHolder{
 
     public StudentViewHolder(@NonNull View itemView) {
         super(itemView);
-        studentId = itemView.findViewById(R.id.listrow_text_v);
+//        studentId = itemView.findViewById(R.id.listrow_text_v);
         studentImage = itemView.findViewById(R.id.listrow_image_v);
 
         itemView.setOnClickListener(new View.OnClickListener() {
@@ -30,7 +30,7 @@ public class StudentViewHolder extends RecyclerView.ViewHolder{
     }
 
     public void bindData(Student student, int position) {
-        studentId.setText(student.id);
+//        studentId.setText(student.id);
         this.position = position;
     }
 }

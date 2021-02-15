@@ -20,30 +20,30 @@ public class TabBarFragment extends Fragment{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_tab_bar, container, false);
-        Button students = view.findViewById(R.id.tabfrag_students_btn);
-        Button info = view.findViewById(R.id.tabfrag_info_btn);
-        Button add = view.findViewById(R.id.tabfrag_add_btn);
+//        Button students = view.findViewById(R.id.tabfrag_students_btn);
+//        Button info = view.findViewById(R.id.tabfrag_info_btn);
+//        Button add = view.findViewById(R.id.tabfrag_add_btn);
 
-        students.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_tabBarFragment_to_studentListFragment);
-            }
-        });
-
-        info.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_tabBarFragment_to_studentInfoFragment);
-            }
-        });
-
-        add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_tabBarFragment_to_addStudentFragment);
-            }
-        });
+//        students.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Navigation.findNavController(view).navigate(R.id.action_tabBarFragment_to_studentListFragment);
+//            }
+//        });
+//
+//        info.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Navigation.findNavController(view).navigate(R.id.action_tabBarFragment_to_studentInfoFragment);
+//            }
+//        });
+//
+//        add.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Navigation.findNavController(view).navigate(R.id.action_tabBarFragment_to_addStudentFragment);
+//            }
+//        });
 
 //        students.setTag(0);
 //        info.setTag(1);
