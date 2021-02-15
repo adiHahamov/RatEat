@@ -17,9 +17,9 @@ import com.adiandnoy.RatEat.model.Student;
 
 import java.util.List;
 
-public class StudentListFragment extends Fragment {
+public class DishesListFragment extends Fragment {
 
-    public StudentListFragment() {
+    public DishesListFragment() {
         // Required empty public constructor
     }
 

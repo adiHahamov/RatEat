@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#1141E6"
-    tools:context=".Fragments.StudentInfoFragment">
+    tools:context=".Fragments.ProfileFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
