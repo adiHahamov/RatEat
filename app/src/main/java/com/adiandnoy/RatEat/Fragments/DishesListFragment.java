@@ -11,17 +11,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.adiandnoy.RatEat.R;
 import com.adiandnoy.RatEat.adapters.StudentsAdapter;
+import com.adiandnoy.RatEat.model.Dish;
 import com.adiandnoy.RatEat.model.Model;
 import com.adiandnoy.RatEat.model.Student;
 
 import java.util.List;
 
 public class DishesListFragment extends Fragment {
-
-    public DishesListFragment() {
-        // Required empty public constructor
-    }
-
+    List<Dish> dishList;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -34,19 +31,22 @@ public class DishesListFragment extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         rv.setLayoutManager(layoutManager);
 
-        List<Student> data = Model.instance.getAllStudents();
-
-        StudentsAdapter adapter = new StudentsAdapter(getLayoutInflater());
-        adapter.data = data;
-        rv.setAdapter(adapter);
-
-        adapter.setOnClickListener(new StudentsAdapter.OnItemClickListener() {
+        Model.instance.getAllDishes(new Model.GetAllDishesListener() {
             @Override
-            public void onItemClick(int position) {
-//                Log.d("TAG","row was clicked " + position);
-
+            public void onComplete(List<Dish> data) {
+                dishList = data;
+//                for (Dish dish:data) {
+                    StudentsAdapter adapter = new StudentsAdapter(getLayoutInflater());
+                    adapter.data = data;
+                    rv.setAdapter(adapter);
+//                }
             }
         });
+
+//        StudentsAdapter adapter = new StudentsAdapter(getLayoutInflater());
+//        adapter.data = data;
+//        rv.setAdapter(adapter);
+//
 
         return view;
     }

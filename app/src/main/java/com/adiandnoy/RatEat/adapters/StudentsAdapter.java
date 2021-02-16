@@ -8,12 +8,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.adiandnoy.RatEat.R;
+import com.adiandnoy.RatEat.model.Dish;
 import com.adiandnoy.RatEat.model.Student;
 
 import java.util.List;
 
 public class StudentsAdapter extends RecyclerView.Adapter<StudentViewHolder>{
-    public List<Student> data;
+    public List<Dish> data;
     LayoutInflater inflater;
 
     public StudentsAdapter(LayoutInflater inflater){
@@ -40,8 +41,8 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull StudentViewHolder holder, int position) {
-        Student student = data.get(position);
-        holder.bindData(student,position);
+        Dish dish = data.get(position);
+        holder.bindData(dish,position);
     }
 
     @Override

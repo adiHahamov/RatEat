@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.adiandnoy.RatEat.R;
+import com.adiandnoy.RatEat.model.Dish;
 import com.adiandnoy.RatEat.model.Student;
 
 public class StudentViewHolder extends RecyclerView.ViewHolder{
@@ -29,7 +30,7 @@ public class StudentViewHolder extends RecyclerView.ViewHolder{
         });
     }
 
-    public void bindData(Student student, int position) {
+    public void bindData(Dish dish, int position) {
 //        studentId.setText(student.id);
         this.position = position;
     }

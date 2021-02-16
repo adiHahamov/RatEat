@@ -1,5 +1,6 @@
 package com.adiandnoy.RatEat;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -27,7 +28,7 @@ public class AppMainActivity extends AppCompatActivity {
         navController = Navigation.findNavController(this, R.id.nav_fragment);
 
         NavigationUI.setupWithNavController(bottomNavigation, navController);
-        
+
     }
 
     @Override
