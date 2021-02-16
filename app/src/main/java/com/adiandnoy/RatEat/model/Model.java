@@ -11,9 +11,11 @@ public class Model {
     private Model(){
         for(int i=0;i<100;i++) {
             Student student = new Student();
+            Dish dish = new Dish();
 //            user.id = "" + i;
             student.name = "Moshe " + i;
             data.add(student);
+
         }
     }
 

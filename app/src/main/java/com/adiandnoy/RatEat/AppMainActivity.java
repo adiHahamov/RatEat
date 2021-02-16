@@ -1,18 +1,14 @@
 package com.adiandnoy.RatEat;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
-import com.adiandnoy.RatEat.Fragments.TabBarFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class AppMainActivity extends AppCompatActivity {

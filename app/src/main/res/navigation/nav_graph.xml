@@ -6,7 +6,7 @@
     app:startDestination="@id/tabBarFragment">
     <fragment
         android:id="@+id/tabBarFragment"
-        android:name="com.adiandnoy.RatEat.Fragments.TabBarFragment"
+        android:name="com.adiandnoy.RatEat.Fragments.SignInFragment"
         android:label="fragment_tab_bar"
         tools:layout="@layout/fragment_tab_bar" >
         <action
