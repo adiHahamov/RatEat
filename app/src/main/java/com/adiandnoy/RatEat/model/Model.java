@@ -7,23 +7,24 @@ import java.util.List;
 
 public class Model {
     public final static Model instance = new Model();
-
-    private Model(){
-        for(int i=0;i<100;i++) {
-            Student student = new Student();
-            Dish dish = new Dish();
-//            user.id = "" + i;
-            student.name = "Moshe " + i;
-            data.add(student);
-
-        }
-    }
-
-    List<Student> data = new LinkedList<Student>();
-
-    public List<Student> getAllStudents() {
-        return data;
-    }
+    ModelFirebase modelFirebase = new ModelFirebase();
+    ModelSql modelSql = new ModelSql();
+//    private Model(){
+//        for(int i=0;i<100;i++) {
+//            Student student = new Student();
+//            Dish dish = new Dish();
+////            user.id = "" + i;
+//            student.name = "Moshe " + i;
+//            data.add(student);
+//
+//        }
+//    }
+//
+//    List<Student> data = new LinkedList<Student>();
+//
+//    public List<Student> getAllStudents() {
+//        return data;
+//    }
 
     //Dish function
     public interface GetAllDishesListener{
@@ -31,22 +32,14 @@ public class Model {
     }
 
     public void getAllDishes(GetAllDishesListener listener) {
-        class MyAsyncTask extends AsyncTask {
-            List<Dish> data;
-            @Override
-            protected Object doInBackground(Object[] objects) {
-                data = AppLocalDB.db.dishDao().getAllDishes();
-                return null;
-            }
+        modelFirebase.getAllDishes(listener);
+    }
+    public interface GetDisheListener{
+        void onComplete(Dish dish);
+    }
 
-            @Override
-            protected void onPostExecute(Object o) {
-                super.onPostExecute(o);
-                listener.onComplete(data);
-            }
-        }
-        MyAsyncTask task = new MyAsyncTask();
-        task.execute();
+    public void getDishe(String id, GetDisheListener listener) {
+        modelFirebase.getDish(id,listener);
     }
 
     public interface AddDisheListener{
@@ -54,23 +47,7 @@ public class Model {
     }
 
     public void addDish(final Dish dish,AddDisheListener listener){
-        class MyAsyncTask  extends AsyncTask{
-            @Override
-            protected Object doInBackground(Object[] objects) {
-                AppLocalDB.db.dishDao().insertAll(dish);
-                return null;
-            }
-
-            @Override
-            protected void onPostExecute(Object o) {
-                super.onPostExecute(o);
-                if (listener != null){
-                    listener.onComplete();
-                }
-            }
-        };
-        MyAsyncTask task = new MyAsyncTask();
-        task.execute();
+        modelFirebase.addDish(dish,listener);
     };
 
     //User function
@@ -79,22 +56,7 @@ public class Model {
     }
 
     public void getAllUsers(GetAllUsersListener listener) {
-        class MyAsyncTask extends AsyncTask {
-            List<User> data;
-            @Override
-            protected Object doInBackground(Object[] objects) {
-                List<User> data = AppLocalDB.db.userDao().getAllUsers();
-                return null;
-            }
-
-            @Override
-            protected void onPostExecute(Object o) {
-                super.onPostExecute(o);
-                listener.onComplete(data);
-            }
-        }
-        MyAsyncTask task = new MyAsyncTask();
-        task.execute();
+        modelFirebase.getAllUsers(listener);
     }
 
     public interface AddUserListener{
@@ -102,23 +64,7 @@ public class Model {
     }
 
     public void addUser(final User user,AddUserListener listener){
-        class MyAsyncTask  extends AsyncTask{
-            @Override
-            protected Object doInBackground(Object[] objects) {
-                AppLocalDB.db.userDao().insertAll(user);
-                return null;
-            }
-
-            @Override
-            protected void onPostExecute(Object o) {
-                super.onPostExecute(o);
-                if (listener != null){
-                    listener.onComplete();
-                }
-            }
-        };
-        MyAsyncTask task = new MyAsyncTask();
-        task.execute();
+        modelFirebase.addUser(user,listener);
     };
 
 }
