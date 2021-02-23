@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "344784491752",
+    "project_id": "colman-android-2021-5c56d",
+    "storage_bucket": "colman-android-2021-5c56d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:344784491752:android:e9e2b006d8766e74d8255d",
+        "android_client_info": {
+          "package_name": "com.adiandnoy.RatEat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "344784491752-18pjp67apru1101tuv1euc9flhvivml9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsqI1Fq3Z3FqqV02fab8cPf0wC8WYRdOg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "344784491752-18pjp67apru1101tuv1euc9flhvivml9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
