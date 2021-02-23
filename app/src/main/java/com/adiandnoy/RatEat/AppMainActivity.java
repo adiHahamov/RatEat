@@ -5,10 +5,12 @@ import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
+import com.adiandnoy.RatEat.Fragments.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class AppMainActivity extends AppCompatActivity {
@@ -19,6 +21,12 @@ public class AppMainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_main);
+
+//        ProfileFragment profile_fragment = new ProfileFragment();
+//        FragmentManager fm = getSupportFragmentManager();
+//
+//        fm.beginTransaction().add(R.id.nav_fragment, profile_fragment).commit();
+
 
         BottomNavigationView bottomNavigation = (BottomNavigationView)findViewById(R.id.button_nav);
         navController = Navigation.findNavController(this, R.id.nav_fragment);
