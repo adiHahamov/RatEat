@@ -62,12 +62,6 @@ public class ModelFirebase {
         // Access a Cloud Firestore instance from your Activity
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        // Create a new user with a first and last name
-//        Map<String, Object> dishToDB = new HashMap<>();
-//        dishToDB.put("first", "Ada");
-//        dishToDB.put("last", "Lovelace");
-//        dishToDB.put("born", 1815);
-
 // Add a new document with a generated ID
         db.collection("dishes").document(dish.getId())
                 .set(dish)
@@ -109,17 +103,27 @@ public class ModelFirebase {
                 listener.onComplete(dish);
             }
         });
+    }
 
-//        db.collection("dishes").document(id)
-//                .get()
-//                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                        if (task.isSuccessful()) {
-//                            Dish dish = task.getResult().toObjects(Dish.class);
-//                        }
-//                        listener.onComplete(dish);
-//                    }
-//                });
+    public void deleteDish(Dish dish, Model.DeleteDisheListener listener) {
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+// Delete document with a generated ID
+        db.collection("dishes").document(dish.getId())
+                .delete()
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        listener.onComplete();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d("TAG", "Error delete document", e);
+                        listener.onComplete();
+                    }
+                });
     }
 }

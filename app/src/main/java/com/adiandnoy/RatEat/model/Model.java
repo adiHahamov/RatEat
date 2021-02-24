@@ -50,6 +50,12 @@ public class Model {
         modelFirebase.addDish(dish,listener);
     };
 
+    interface DeleteDisheListener extends AddDisheListener{}
+
+    public void deleteDish(Dish dish,DeleteDisheListener listener){
+        modelFirebase.deleteDish(dish,listener);
+    };
+
     //User function
     public interface GetAllUsersListener{
         void onComplete(List<User> data);
