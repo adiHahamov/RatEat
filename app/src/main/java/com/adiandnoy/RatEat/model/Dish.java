@@ -13,6 +13,7 @@ public class Dish {
     private String resturantName;
     private String ingredients;
     private String dishDescription;
+    private String imageUrl;
 
     @NonNull
     public String getId() {
@@ -53,5 +54,12 @@ public class Dish {
 
     public void setDishDescription(String dishDescription) {
         this.dishDescription = dishDescription;
+    }
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
     }
 }

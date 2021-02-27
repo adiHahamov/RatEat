@@ -1,5 +1,6 @@
 package com.adiandnoy.RatEat.model;
 
+import android.graphics.Bitmap;
 import android.os.AsyncTask;
 
 import java.util.LinkedList;
@@ -72,5 +73,12 @@ public class Model {
     public void addUser(final User user,AddUserListener listener){
         modelFirebase.addUser(user,listener);
     };
+
+    public interface uploadImageListener{
+        public void onComplete(String url);
+    }
+    public void uploadImage(Bitmap imageBmp, String name, final uploadImageListener listener){
+        modelFirebase.uploadImage(imageBmp, name,listener);
+    }
 
 }

@@ -10,7 +10,7 @@
     <!-- TODO: Update blank fragment layout -->
 
     <ImageView
-        android:id="@+id/import_image"
+        android:id="@+id/import_image_add_dish_fragment"
         android:layout_width="279dp"
         android:layout_height="246dp"
         android:layout_marginTop="16dp"
@@ -78,7 +78,7 @@
         app:layout_constraintHorizontal_bias="0.944"
         app:layout_constraintStart_toEndOf="@+id/input_dish_ingredient"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/import_image" />
+        app:layout_constraintTop_toBottomOf="@+id/import_image_add_dish_fragment" />
 
     <Button
         android:id="@+id/save_dish_buttom"
@@ -94,5 +94,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/input_dish_description"
         app:layout_constraintVertical_bias="0.223" />
+
+    <ImageButton
+        android:id="@+id/editImageAddDishFragment"
+        android:layout_width="72dp"
+        android:layout_height="59dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="20dp"
+        android:background="#00FFFFFF"
+        android:scaleType="fitXY"
+        android:src="@android:drawable/ic_menu_edit"
+        app:layout_constraintBottom_toBottomOf="@+id/import_image_add_dish_fragment"
+        app:layout_constraintEnd_toEndOf="@+id/import_image_add_dish_fragment" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
