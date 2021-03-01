@@ -48,22 +48,6 @@ public class ModelFirebase {
 //        return dishList;
     }
 
-    ;
-
-//                {
-////                    @Override
-////                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-////                        if (task.isSuccessful()) {
-////                            for (QueryDocumentSnapshot document : task.getResult()) {
-////                                Log.d(TAG, document.getId() + " => " + document.getData());
-////                            }
-////                        } else {
-////                            Log.d(TAG, "Error getting documents: ", task.getException());
-////                        }
-////                    }
-//                });
-//    }
-
     public void addDish(Dish dish, Model.AddDisheListener listener) {
         // Access a Cloud Firestore instance from your Activity
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -92,6 +76,26 @@ public class ModelFirebase {
     }
 
     public void addUser(User user, Model.AddUserListener listener) {
+        // Access a Cloud Firestore instance from your Activity
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+// Add a new document with a generated ID
+        db.collection("users").document(user.getId())
+                .set(user)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d("TAG", "");
+                        listener.onComplete();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d("TAG", "Error adding document", e);
+                        listener.onComplete();
+                    }
+                });
     }
 
     public void getDish(String id, Model.GetDisheListener listener) {

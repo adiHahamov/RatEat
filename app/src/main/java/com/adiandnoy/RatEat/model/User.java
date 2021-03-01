@@ -8,14 +8,20 @@ import androidx.room.PrimaryKey;
 public class User {
     @PrimaryKey
     @NonNull
-    private String UserName;
+    private String id;
     private String name;
     private String lastName;
+    private String mail;
     private String password;
+    private String imageUrl;
 
     @NonNull
-    public String getUserName() {
-        return UserName;
+    public String getId() {
+        return id;
+    }
+
+    public String getMail() {
+        return mail;
     }
 
     public String getName() {
@@ -30,8 +36,12 @@ public class User {
         return password;
     }
 
-    public void setUserName(@NonNull String userName) {
-        UserName = userName;
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setId(@NonNull String id) {
+        this.id = id;
     }
 
     public void setName(String name) {
@@ -44,5 +54,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }
