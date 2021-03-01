@@ -6,14 +6,27 @@
     android:layout_height="wrap_content"
     android:background="#D6C5C5">
 
+    <TextView
+        android:id="@+id/dishNameLisrRow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="#BD9393"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
-        android:id="@+id/listrow_image_v"
+        android:id="@+id/listrow_image"
         android:layout_width="272dp"
         android:layout_height="242dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/ratingBar2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_launcher_foreground" />
@@ -28,6 +41,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.472"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listrow_image_v" />
+        app:layout_constraintTop_toBottomOf="@+id/listrow_image" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
