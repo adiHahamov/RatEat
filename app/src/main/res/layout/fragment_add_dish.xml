@@ -11,8 +11,8 @@
 
     <ImageView
         android:id="@+id/import_image_add_dish_fragment"
-        android:layout_width="279dp"
-        android:layout_height="246dp"
+        android:layout_width="235dp"
+        android:layout_height="205dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp"
         android:src="@android:drawable/ic_menu_gallery"
@@ -29,6 +29,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
+        android:focusableInTouchMode="false"
         android:hint="Dish ingredients"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/input_dish_name"
@@ -43,6 +44,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
+        android:focusableInTouchMode="false"
         android:hint="Resturant name"
         android:singleLine="true"
         app:layout_constraintEnd_toEndOf="parent"
@@ -59,6 +61,8 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
+        android:focusable="auto"
+        android:focusableInTouchMode="false"
         android:hint="Dish description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -74,6 +78,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:hint="Dish name"
+        android:selectAllOnFocus="false"
         android:singleLine="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/input_resturant_name"
@@ -86,16 +91,17 @@
         android:id="@+id/save_dish_buttom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="161dp"
+        android:layout_marginStart="162dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="162dp"
+        android:gravity="center_horizontal"
         android:text="Save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_dish_description"
-        app:layout_constraintVertical_bias="0.223" />
+        app:layout_constraintTop_toBottomOf="@+id/userRatingBar"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
         android:id="@+id/editImageAddDishFragment"
@@ -108,5 +114,17 @@
         android:src="@android:drawable/ic_menu_edit"
         app:layout_constraintBottom_toBottomOf="@+id/import_image_add_dish_fragment"
         app:layout_constraintEnd_toEndOf="@+id/import_image_add_dish_fragment" />
+
+    <RatingBar
+        android:id="@+id/userRatingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="162dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="162dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/input_dish_description" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
