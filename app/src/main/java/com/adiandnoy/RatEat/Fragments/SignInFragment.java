@@ -1,10 +1,14 @@
 package com.adiandnoy.RatEat.Fragments;
 
+import android.graphics.Paint;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -21,8 +25,24 @@ public class SignInFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_tab_bar, container, false);
+        View view =  inflater.inflate(R.layout.fragment_login, container, false);
         Button sign_in = view.findViewById(R.id.sign_in);
+
+        TextView register = view.findViewById(R.id.register);
+        register.setPaintFlags(register.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                RegisterFragment register_fragment = new RegisterFragment();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.nav_fragment, register_fragment);
+                transaction.commit();
+            }
+        });
+//        SpannableString content = new SpannableString("Content");
+//        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+//        textView.setText(content);
 
 //        Button info = view.findViewById(R.id.tabfrag_info_btn);
 //        Button add = view.findViewById(R.id.tabfrag_add_btn);
