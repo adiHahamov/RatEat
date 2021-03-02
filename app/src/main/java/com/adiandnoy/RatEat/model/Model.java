@@ -10,22 +10,6 @@ public class Model {
     public final static Model instance = new Model();
     ModelFirebase modelFirebase = new ModelFirebase();
     ModelSql modelSql = new ModelSql();
-//    private Model(){
-//        for(int i=0;i<100;i++) {
-//            Student student = new Student();
-//            Dish dish = new Dish();
-////            user.id = "" + i;
-//            student.name = "Moshe " + i;
-//            data.add(student);
-//
-//        }
-//    }
-//
-//    List<Student> data = new LinkedList<Student>();
-//
-//    public List<Student> getAllStudents() {
-//        return data;
-//    }
 
     //Dish function
     public interface GetAllDishesListener{

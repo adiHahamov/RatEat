@@ -14,6 +14,7 @@ public class Dish {
     private String ingredients;
     private String dishDescription;
     private String imageUrl;
+    private Float stars;
 
     @NonNull
     public String getId() {
@@ -61,5 +62,13 @@ public class Dish {
 
     public String getImageUrl() {
         return imageUrl;
+    }
+
+    public Float getStars() {
+        return stars;
+    }
+
+    public void setStars(Float stars) {
+        this.stars = stars;
     }
 }

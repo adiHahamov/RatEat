@@ -9,15 +9,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.adiandnoy.RatEat.R;
 import com.adiandnoy.RatEat.model.Dish;
-import com.adiandnoy.RatEat.model.Student;
 
 import java.util.List;
 
-public class StudentsAdapter extends RecyclerView.Adapter<StudentViewHolder>{
+public class DishAdapter extends RecyclerView.Adapter<DishViewHolder>{
     public List<Dish> data;
     LayoutInflater inflater;
 
-    public StudentsAdapter(LayoutInflater inflater){
+    public DishAdapter(LayoutInflater inflater){
         this.inflater = inflater;
     }
     public interface OnItemClickListener{
@@ -32,15 +31,15 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentViewHolder>{
 
     @NonNull
     @Override
-    public StudentViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public DishViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.list_row,parent,false);
-        StudentViewHolder holder = new StudentViewHolder(view);
+        DishViewHolder holder = new DishViewHolder(view);
         holder.listener = listener;
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull StudentViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull DishViewHolder holder, int position) {
         Dish dish = data.get(position);
         holder.bindData(dish,position);
     }

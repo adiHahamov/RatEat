@@ -9,17 +9,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.adiandnoy.RatEat.R;
 import com.adiandnoy.RatEat.model.Dish;
+import com.squareup.picasso.Picasso;
 
-public class StudentViewHolder extends RecyclerView.ViewHolder{
-    public StudentsAdapter.OnItemClickListener listener;
+public class DishViewHolder extends RecyclerView.ViewHolder{
+    public DishAdapter.OnItemClickListener listener;
     TextView dishName = itemView.findViewById(R.id.dishNameLisrRow);;
-    ImageView studentImage = itemView.findViewById(R.id.listrow_image);
+    ImageView dishImage = itemView.findViewById(R.id.listrow_image);
     int position;
 
-    public StudentViewHolder(@NonNull View itemView) {
+    public DishViewHolder(@NonNull View itemView) {
         super(itemView);
         dishName = itemView.findViewById(R.id.dishNameLisrRow);
-        studentImage = itemView.findViewById(R.id.listrow_image);
+        dishImage = itemView.findViewById(R.id.listrow_image);
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,6 +33,9 @@ public class StudentViewHolder extends RecyclerView.ViewHolder{
     public void bindData(Dish dish, int position) {
         if (dish.getDishName() != null) {
             dishName.setText(dish.getDishName());
+        }
+        if (dish.getImageUrl() != null){
+            Picasso.get().load(dish.getImageUrl()).into(dishImage);
         }
         this.position = position;
     }

@@ -10,10 +10,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.adiandnoy.RatEat.R;
-import com.adiandnoy.RatEat.adapters.StudentsAdapter;
+import com.adiandnoy.RatEat.adapters.DishAdapter;
 import com.adiandnoy.RatEat.model.Dish;
 import com.adiandnoy.RatEat.model.Model;
-import com.adiandnoy.RatEat.model.Student;
 
 import java.util.List;
 
@@ -36,7 +35,7 @@ public class DishesListFragment extends Fragment {
             public void onComplete(List<Dish> data) {
                 dishList = data;
 //                for (Dish dish:data) {
-                    StudentsAdapter adapter = new StudentsAdapter(getLayoutInflater());
+                    DishAdapter adapter = new DishAdapter(getLayoutInflater());
                     adapter.data = data;
                     rv.setAdapter(adapter);
 //                }
