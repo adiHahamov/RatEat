@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.Navigation;
 
 import com.adiandnoy.RatEat.R;
 
@@ -27,10 +28,8 @@ public class ProfileFragment extends Fragment {
         dtls_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MyDetailsFragment dtls_fragment = new MyDetailsFragment();
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.nav_fragment, dtls_fragment);
-                transaction.commit();
+                Navigation.findNavController(view)
+                        .navigate(R.id.action_profileFragment_to_myDetailsFragment);
             }
         });
 

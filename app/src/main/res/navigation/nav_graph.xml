@@ -10,14 +10,17 @@
         android:label="fragment_tab_bar"
         tools:layout="@layout/fragment_tab_bar" >
         <action
-            android:id="@+id/action_tabBarFragment_to_studentListFragment"
+            android:id="@+id/action_tabBarFragment_to_dishesListFragment"
             app:destination="@id/studentListFragment" />
         <action
-            android:id="@+id/action_tabBarFragment_to_studentInfoFragment"
+            android:id="@+id/action_tabBarFragment_to_profileFragment"
             app:destination="@id/studentInfoFragment" />
         <action
             android:id="@+id/action_tabBarFragment_to_addStudentFragment"
             app:destination="@id/addStudentFragment" />
+        <action
+            android:id="@+id/action_navBar_to_register"
+            app:destination="@id/registerFragment" />
     </fragment>
     <fragment
         android:id="@+id/studentListFragment"
@@ -28,10 +31,24 @@
         android:id="@+id/studentInfoFragment"
         android:name="com.adiandnoy.RatEat.Fragments.ProfileFragment"
         android:label="dish info"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_myDetailsFragment"
+            app:destination="@id/myDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/addStudentFragment"
         android:name="com.adiandnoy.RatEat.Fragments.AddDishFragment"
         android:label="add dish"
         tools:layout="@layout/fragment_add_dish" />
+    <fragment
+        android:id="@+id/myDetailsFragment"
+        android:name="com.adiandnoy.RatEat.Fragments.MyDetailsFragment"
+        android:label="fragment_my_details"
+        tools:layout="@layout/fragment_my_details" />
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.adiandnoy.RatEat.Fragments.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" />
 </navigation>

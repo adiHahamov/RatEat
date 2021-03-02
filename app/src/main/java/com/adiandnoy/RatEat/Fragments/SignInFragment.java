@@ -34,10 +34,8 @@ public class SignInFragment extends Fragment{
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                RegisterFragment register_fragment = new RegisterFragment();
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.nav_fragment, register_fragment);
-                transaction.commit();
+                Navigation.findNavController(view)
+                        .navigate(R.id.action_navBar_to_register);
             }
         });
 //        SpannableString content = new SpannableString("Content");
