@@ -26,7 +26,11 @@
         android:id="@+id/studentListFragment"
         android:name="com.adiandnoy.RatEat.Fragments.DishesListFragment"
         android:label="dishes list"
-        tools:layout="@layout/fragment_dishes_list" />
+        tools:layout="@layout/fragment_dishes_list" >
+        <action
+            android:id="@+id/action_DishListFragment_to_dishDetailsFragment"
+            app:destination="@id/dishDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/studentInfoFragment"
         android:name="com.adiandnoy.RatEat.Fragments.ProfileFragment"
@@ -51,4 +55,12 @@
         android:name="com.adiandnoy.RatEat.Fragments.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" />
+    <fragment
+        android:id="@+id/dishDetailsFragment"
+        android:name="com.adiandnoy.RatEat.Fragments.DishDetailsFragment"
+        android:label="DishDetailsFragment"
+        tools:layout="@layout/fragment_dish_details">
+        <argument android:name="dishImgUrl"
+            app:argType="string" />
+    </fragment>
 </navigation>
