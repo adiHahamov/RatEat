@@ -19,6 +19,15 @@ public class Model {
     public void getAllDishes(GetAllDishesListener listener) {
         modelFirebase.getAllDishes(listener);
     }
+
+    public interface GetAllDishesForPersonListener{
+        void onComplete(List<Dish> data);
+    }
+
+    public void getAllDishesForPerson(GetAllDishesForPersonListener listener) {
+        modelFirebase.getAllDishesForPerson(listener);
+    }
+
     public interface GetDisheListener{
         void onComplete(Dish dish);
     }

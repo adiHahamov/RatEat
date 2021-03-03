@@ -61,6 +61,26 @@
         android:label="DishDetailsFragment"
         tools:layout="@layout/fragment_dish_details">
         <argument android:name="dishImgUrl"
-            app:argType="string" />
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="dishName"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="dishDescription"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="resturantName"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="dishIngredients"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="stars"
+            app:argType="float" />
     </fragment>
 </navigation>

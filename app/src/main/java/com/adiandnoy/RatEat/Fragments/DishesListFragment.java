@@ -45,8 +45,15 @@ public class DishesListFragment extends Fragment {
                     adapter.setOnClickListener(new DishAdapter.OnItemClickListener() {
                         @Override
                         public void onItemClick(int position) {
+                            Float startsNumber = Float.valueOf(0);
+                            if (dishList.get(position).getStars() != null){
+                                startsNumber = dishList.get(position).getStars();
+                            }
+                            DishesListFragmentDirections.ActionDishListFragmentToDishDetailsFragment dishInfoAction = DishesListFragmentDirections.actionDishListFragmentToDishDetailsFragment(dishList.get(position).getImageUrl(),dishList.get(position).getDishName(),dishList.get(position).getDishDescription(),dishList.get(position).getResturantName(),dishList.get(position).getIngredients(),startsNumber);
+                            Navigation.findNavController(view).navigate(dishInfoAction);
 //                            DishesListFragmentDirections.actionDishListFragmentToDishDetailsFragment("noy");
-                           Navigation.findNavController(view).navigate(R.id.action_DishListFragment_to_dishDetailsFragment);                        }
+//                           Navigation.findNavController(view).navigate(R.id.action_DishListFragment_to_dishDetailsFragment);
+                           }
                     });
 //                }
             }

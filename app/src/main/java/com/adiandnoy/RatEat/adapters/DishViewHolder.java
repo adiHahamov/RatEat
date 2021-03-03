@@ -37,8 +37,9 @@ public class DishViewHolder extends RecyclerView.ViewHolder{
         if (dish.getDishName() != null) {
             dishName.setText(dish.getDishName());
         }
+        dishImage.setImageResource(R.drawable.dish);
         if (dish.getImageUrl() != null){
-            Picasso.get().load(dish.getImageUrl()).into(dishImage);
+            Picasso.get().load(dish.getImageUrl()).placeholder(R.drawable.dish).into(dishImage);
         }
         if (dish.getStars() != null) {
             ratingBar.setRating(dish.getStars());
