@@ -20,6 +20,7 @@ public class myDishPicAdapter extends RecyclerView.Adapter<myDishPicHolder> {
     public myDishPicAdapter(LayoutInflater inflater){
         this.inflater = inflater;
     }
+
     public interface OnItemClickListener{
         void onItemClick(int position);
     }
@@ -34,7 +35,7 @@ public class myDishPicAdapter extends RecyclerView.Adapter<myDishPicHolder> {
     @NonNull
     @Override
     public myDishPicHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.my_dish_row,parent,false);
+        View view = inflater.inflate(R.layout.my_dish_row, parent,false);
         myDishPicHolder holder = new myDishPicHolder(view);
         holder.listener = listener;
         return holder;
@@ -43,7 +44,7 @@ public class myDishPicAdapter extends RecyclerView.Adapter<myDishPicHolder> {
     @Override
     public void onBindViewHolder(@NonNull myDishPicHolder holder, int position) {
         Dish dish = data.get(position);
-        holder.bindData(dish,position);
+        holder.bindData(dish, position);
     }
 
     @Override

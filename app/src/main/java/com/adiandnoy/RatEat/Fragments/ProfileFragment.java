@@ -52,11 +52,13 @@ public class ProfileFragment extends Fragment {
                 myDishPicAdapter adapter = new myDishPicAdapter(getLayoutInflater());
                 adapter.data = data;
                 dishesList.setAdapter(adapter);
+
                 adapter.setOnClickListener(new myDishPicAdapter.OnItemClickListener() {
                     @Override
                     public void onItemClick(int position) {
 //                            DishesListFragmentDirections.actionDishListFragmentToDishDetailsFragment("noy");
-                        Navigation.findNavController(view).navigate(R.id.action_DishListFragment_to_dishDetailsFragment);                        }
+                        Navigation.findNavController(view).navigate(R.id.action_DishListFragment_to_dishDetailsFragment);
+                    }
                 });
 //                }
             }

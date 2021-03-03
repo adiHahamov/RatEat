@@ -26,7 +26,7 @@ public class DishesListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_dishes_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_dishes_list, container, false);
         RecyclerView rv = view.findViewById(R.id.studentlistfrag_list);
 
         rv.hasFixedSize();
@@ -39,22 +39,22 @@ public class DishesListFragment extends Fragment {
             public void onComplete(List<Dish> data) {
                 dishList = data;
 //                for (Dish dish:data) {
-                    DishAdapter adapter = new DishAdapter(getLayoutInflater());
-                    adapter.data = data;
-                    rv.setAdapter(adapter);
-                    adapter.setOnClickListener(new DishAdapter.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(int position) {
-                            Float startsNumber = Float.valueOf(0);
-                            if (dishList.get(position).getStars() != null){
-                                startsNumber = dishList.get(position).getStars();
-                            }
-                            DishesListFragmentDirections.ActionDishListFragmentToDishDetailsFragment dishInfoAction = DishesListFragmentDirections.actionDishListFragmentToDishDetailsFragment(dishList.get(position).getImageUrl(),dishList.get(position).getDishName(),dishList.get(position).getDishDescription(),dishList.get(position).getResturantName(),dishList.get(position).getIngredients(),startsNumber);
-                            Navigation.findNavController(view).navigate(dishInfoAction);
+                DishAdapter adapter = new DishAdapter(getLayoutInflater());
+                adapter.data = data;
+                rv.setAdapter(adapter);
+                adapter.setOnClickListener(new DishAdapter.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(int position) {
+                        Float startsNumber = Float.valueOf(0);
+                        if (dishList.get(position).getStars() != null) {
+                            startsNumber = dishList.get(position).getStars();
+                        }
+                        DishesListFragmentDirections.ActionDishListFragmentToDishDetailsFragment dishInfoAction = DishesListFragmentDirections.actionDishListFragmentToDishDetailsFragment(dishList.get(position).getImageUrl(), dishList.get(position).getDishName(), dishList.get(position).getDishDescription(), dishList.get(position).getResturantName(), dishList.get(position).getIngredients(), startsNumber);
+                        Navigation.findNavController(view).navigate(dishInfoAction);
 //                            DishesListFragmentDirections.actionDishListFragmentToDishDetailsFragment("noy");
 //                           Navigation.findNavController(view).navigate(R.id.action_DishListFragment_to_dishDetailsFragment);
-                           }
-                    });
+                    }
+                });
 //                }
             }
         });

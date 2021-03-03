@@ -29,7 +29,7 @@ public class myDishPicHolder extends RecyclerView.ViewHolder {
 
     public void bindData(Dish dish, int position) {
         if (dish.getImageUrl() != null){
-            Picasso.get().load(dish.getImageUrl()).into(dishImage);
+            Picasso.get().load(dish.getImageUrl()).placeholder(R.drawable.dish).into(dishImage);
         }
 
         this.position = position;
