@@ -45,7 +45,7 @@ public class DishesListFragment extends Fragment {
                     adapter.setOnClickListener(new DishAdapter.OnItemClickListener() {
                         @Override
                         public void onItemClick(int position) {
-                            DishesListFragmentDirections.actionDishListFragmentToDishDetailsFragment("noy");
+//                            DishesListFragmentDirections.actionDishListFragmentToDishDetailsFragment("noy");
                            Navigation.findNavController(view).navigate(R.id.action_DishListFragment_to_dishDetailsFragment);                        }
                     });
 //                }

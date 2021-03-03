@@ -20,11 +20,7 @@ public class DishDetailsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        String imgUrl = DishDetailsFragmentArgs.fromBundle(getArguments()).getDishImgUrl();
         View view = inflater.inflate(R.layout.fragment_dish_details, container, false);
-
-        Log.d("TAG", imgUrl);
-
 //        ImageView dishImage = view.findViewById(R.id.dish_img);
 //        Uri convImgUri = Uri.parse(imgUrl);
 //        dishImage.setImageURI(convImgUri);
