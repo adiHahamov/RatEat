@@ -15,7 +15,7 @@ import java.util.List;
 
 public class myDishPicAdapter extends RecyclerView.Adapter<myDishPicHolder> {
     LayoutInflater inflater;
-    public List<Dish>myDishes;
+    public List<Dish> data;
 
     public myDishPicAdapter(LayoutInflater inflater){
         this.inflater = inflater;
@@ -42,12 +42,12 @@ public class myDishPicAdapter extends RecyclerView.Adapter<myDishPicHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull myDishPicHolder holder, int position) {
-        Dish dish = myDishes.get(position);
+        Dish dish = data.get(position);
         holder.bindData(dish,position);
     }
 
     @Override
     public int getItemCount() {
-        return myDishes.size();
+        return data.size();
     }
 }

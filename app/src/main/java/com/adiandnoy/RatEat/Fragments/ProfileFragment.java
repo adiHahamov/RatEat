@@ -50,7 +50,7 @@ public class ProfileFragment extends Fragment {
                 myDishes = data;
 //                for (Dish dish:data) {
                 myDishPicAdapter adapter = new myDishPicAdapter(getLayoutInflater());
-                adapter.myDishes = data;
+                adapter.data = data;
                 dishesList.setAdapter(adapter);
                 adapter.setOnClickListener(new myDishPicAdapter.OnItemClickListener() {
                     @Override

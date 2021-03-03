@@ -1,10 +1,7 @@
 package com.adiandnoy.RatEat.adapters;
 
-import android.net.Uri;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.RatingBar;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,12 +12,12 @@ import com.squareup.picasso.Picasso;
 
 public class myDishPicHolder extends RecyclerView.ViewHolder {
     public myDishPicAdapter.OnItemClickListener listener;
-    ImageView dishImage = itemView.findViewById(R.id.dish);
+    ImageView dishImage = itemView.findViewById(R.id.image_my_list_row);
     int position;
 
     public myDishPicHolder(@NonNull View itemView) {
         super(itemView);
-        dishImage = itemView.findViewById(R.id.listrow_image);
+        dishImage = itemView.findViewById(R.id.image_my_list_row);
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
