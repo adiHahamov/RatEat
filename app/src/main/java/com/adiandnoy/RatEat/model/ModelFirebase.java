@@ -164,4 +164,8 @@ public class ModelFirebase {
             }
         });
     }
+
+    public void getAllDishesForPerson(Model.GetAllDishesForPersonListener listener) {
+
+    }
 }
