@@ -54,7 +54,7 @@ public class Model {
         void onComplete();
     }
 
-    public void addUser(final User user,AddUserListener listener){
+    public void addUser(final User user, AddUserListener listener){
         modelFirebase.addUser(user,listener);
     };
 

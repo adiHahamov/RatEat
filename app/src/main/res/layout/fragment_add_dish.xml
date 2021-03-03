@@ -11,8 +11,8 @@
 
     <ImageView
         android:id="@+id/import_image_add_dish_fragment"
-        android:layout_width="235dp"
-        android:layout_height="205dp"
+        android:layout_width="179dp"
+        android:layout_height="162dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp"
         android:src="@android:drawable/ic_menu_gallery"
@@ -100,7 +100,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userRatingBar"
+        app:layout_constraintTop_toBottomOf="@+id/dishRatingBar"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
@@ -116,7 +116,7 @@
         app:layout_constraintEnd_toEndOf="@+id/import_image_add_dish_fragment" />
 
     <RatingBar
-        android:id="@+id/userRatingBar"
+        android:id="@+id/dishRatingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="162dp"

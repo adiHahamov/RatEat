@@ -2,6 +2,7 @@ package com.adiandnoy.RatEat.adapters;
 
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,12 +16,14 @@ public class DishViewHolder extends RecyclerView.ViewHolder{
     public DishAdapter.OnItemClickListener listener;
     TextView dishName = itemView.findViewById(R.id.dishNameLisrRow);;
     ImageView dishImage = itemView.findViewById(R.id.listrow_image);
+    RatingBar ratingBar;
     int position;
 
     public DishViewHolder(@NonNull View itemView) {
         super(itemView);
         dishName = itemView.findViewById(R.id.dishNameLisrRow);
         dishImage = itemView.findViewById(R.id.listrow_image);
+        ratingBar = itemView.findViewById(R.id.viewDishRatingBar);
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,6 +39,9 @@ public class DishViewHolder extends RecyclerView.ViewHolder{
         }
         if (dish.getImageUrl() != null){
             Picasso.get().load(dish.getImageUrl()).into(dishImage);
+        }
+        if (dish.getStars() != null) {
+            ratingBar.setRating(dish.getStars());
         }
         this.position = position;
     }

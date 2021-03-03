@@ -5,13 +5,13 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.renderscript.ScriptGroup;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
@@ -33,6 +33,7 @@ public class AddDishFragment extends Fragment {
     TextInputEditText ingredient;
     ImageButton editImage;
     ImageView dishImage;
+    RatingBar dishStars;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -46,6 +47,7 @@ public class AddDishFragment extends Fragment {
         ingredient =  view.findViewById(R.id.input_dish_ingredient);
         editImage =  view.findViewById(R.id.editImageAddDishFragment);
         dishImage = view.findViewById(R.id.import_image_add_dish_fragment);
+        dishStars = view.findViewById(R.id.dishRatingBar);
 
         editImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +66,7 @@ public class AddDishFragment extends Fragment {
                 dish.setDishDescription(description.getText().toString());
                 dish.setResturantName(resturant.getText().toString());
                 dish.setIngredients(ingredient.getText().toString());
+                dish.setStars(dishStars.getRating());
 
                 //Save the image
                 BitmapDrawable drawable = (BitmapDrawable)dishImage.getDrawable();
@@ -79,6 +82,8 @@ public class AddDishFragment extends Fragment {
                                 @Override
                                 public void onComplete() {
 //                                    Navigation.findNavController(addDish)
+//                                    Navigation.findNavController(view).navigate(R.id.action_registerFragment_to_studentListFragment);
+
                                 }
                             });
                         }
