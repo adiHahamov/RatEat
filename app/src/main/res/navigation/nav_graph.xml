@@ -3,84 +3,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/tabBarFragment">
-    <fragment
-        android:id="@+id/tabBarFragment"
-        android:name="com.adiandnoy.RatEat.Fragments.SignInFragment"
-        android:label="fragment_tab_bar"
-        tools:layout="@layout/fragment_tab_bar" >
-        <action
-            android:id="@+id/action_tabBarFragment_to_dishesListFragment"
-            app:destination="@id/studentListFragment" />
-        <action
-            android:id="@+id/action_tabBarFragment_to_profileFragment"
-            app:destination="@id/studentInfoFragment" />
-        <action
-            android:id="@+id/action_tabBarFragment_to_addStudentFragment"
-            app:destination="@id/addStudentFragment" />
-        <action
-            android:id="@+id/action_navBar_to_register"
-            app:destination="@id/registerFragment" />
-    </fragment>
+    app:startDestination="@id/studentListFragment">
+
     <fragment
         android:id="@+id/studentListFragment"
-        android:name="com.adiandnoy.RatEat.Fragments.DishesListFragment"
-        android:label="dishes list"
-        tools:layout="@layout/fragment_dishes_list" >
+        android:name="com.adiandnoy.rateEat.StudentListFragment"
+        android:label="fragment_student_list"
+        tools:layout="@layout/fragment_student_list" >
         <action
-            android:id="@+id/action_DishListFragment_to_dishDetailsFragment"
-            app:destination="@id/dishDetailsFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/studentInfoFragment"
-        android:name="com.adiandnoy.RatEat.Fragments.ProfileFragment"
-        android:label="dish info"
-        tools:layout="@layout/fragment_profile" >
+            android:id="@+id/action_studentListFragment_to_addStudentFragment"
+            app:destination="@id/addStudentFragment" />
         <action
-            android:id="@+id/action_profileFragment_to_myDetailsFragment"
-            app:destination="@id/myDetailsFragment" />
+            android:id="@+id/action_studentListFragment_to_studentDetailsFragment"
+            app:destination="@id/studentDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/addStudentFragment"
-        android:name="com.adiandnoy.RatEat.Fragments.AddDishFragment"
-        android:label="add dish"
-        tools:layout="@layout/fragment_add_dish" />
+        android:name="com.adiandnoy.rateEat.AddStudentFragment"
+        android:label="fragment_add_student"
+        tools:layout="@layout/fragment_add_student" />
     <fragment
-        android:id="@+id/myDetailsFragment"
-        android:name="com.adiandnoy.RatEat.Fragments.MyDetailsFragment"
-        android:label="fragment_my_details"
-        tools:layout="@layout/fragment_my_details" />
-    <fragment
-        android:id="@+id/registerFragment"
-        android:name="com.adiandnoy.RatEat.Fragments.RegisterFragment"
-        android:label="fragment_register"
-        tools:layout="@layout/fragment_register" />
-    <fragment
-        android:id="@+id/dishDetailsFragment"
-        android:name="com.adiandnoy.RatEat.Fragments.DishDetailsFragment"
-        android:label="DishDetailsFragment"
-        tools:layout="@layout/fragment_dish_details">
-        <argument android:name="dishImgUrl"
-            app:argType="string"
-            app:nullable="true" />
+        android:id="@+id/studentDetailsFragment"
+        android:name="com.adiandnoy.rateEat.StudentDetailsFragment"
+        android:label="fragment_student_details"
+        tools:layout="@layout/fragment_student_details" >
         <argument
-            android:name="dishName"
-            app:argType="string"
-            app:nullable="true" />
-        <argument
-            android:name="dishDescription"
-            app:argType="string"
-            app:nullable="true" />
-        <argument
-            android:name="resturantName"
-            app:argType="string"
-            app:nullable="true" />
-        <argument
-            android:name="dishIngredients"
-            app:argType="string"
-            app:nullable="true" />
-        <argument
-            android:name="stars"
-            app:argType="float" />
+            android:name="studentId"
+            app:argType="string" />
     </fragment>
 </navigation>
