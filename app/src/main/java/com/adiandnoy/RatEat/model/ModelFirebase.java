@@ -166,6 +166,23 @@ public class ModelFirebase {
     }
 
     public void getAllDishesForPerson(Model.GetAllDishesForPersonListener listener) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        List<Dish> dishList = new ArrayList<Dish>();
 
+        db.collection("dishes") .whereEqualTo("capital", true)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Dish dish = document.toObject(Dish.class);
+                                dishList.add(dish);
+                            }
+//                            return dishList;
+                        }
+                        listener.onComplete(dishList);
+                    }
+                });
     }
 }
