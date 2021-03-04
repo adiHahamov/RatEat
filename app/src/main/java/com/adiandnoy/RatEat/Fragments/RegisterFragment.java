@@ -111,18 +111,18 @@ public class RegisterFragment extends Fragment {
 //                                        progressBar.setVisibility(View.INVISIBLE);
                                         Toast.makeText(getActivity(), "User has been registered successfully!", Toast.LENGTH_LONG).show();
 //                                        User user = new User();
-                                         user.setName(name.getText().toString());
-                                         user.setLastName(lastName.getText().toString());
-                                         user.setMail(mail.getText().toString());
-                                         user.setPassword(password.getText().toString());
-
-                                        Model.instance.addUser(user, new Model.AddUserListener() {
-                                            @Override
-                                            public void onComplete() {
-//                                                final NavController navController = Navigation.findNavController(view);
-//                                                navController.navigate(R.id.signInFragment);
-                                            }
-                                        });
+//                                         user.setName(name.getText().toString());
+//                                         user.setLastName(lastName.getText().toString());
+//                                         user.setMail(mail.getText().toString());
+//                                         user.setPassword(password.getText().toString());
+//
+//                                        Model.instance.addUser(user, new Model.AddUserListener() {
+//                                            @Override
+//                                            public void onComplete() {
+////                                                final NavController navController = Navigation.findNavController(view);
+////                                                navController.navigate(R.id.signInFragment);
+//                                            }
+//                                        });
 
 //                                        FirebaseUser currentUser = mAuth.getCurrentUser();
                                     }
@@ -139,6 +139,21 @@ public class RegisterFragment extends Fragment {
 //
 //                                }
 //                            });
+
+                            user.setName(name.getText().toString());
+                            user.setLastName(lastName.getText().toString());
+                            user.setMail(mail.getText().toString());
+                            user.setPassword(password.getText().toString());
+
+                            Model.instance.addUser(user, new Model.AddUserListener() {
+                                @Override
+                                public void onComplete() {
+//                                                final NavController navController = Navigation.findNavController(view);
+//                                                navController.navigate(R.id.signInFragment);
+                                }
+                            });
+                            FirebaseUser currentUser = mAuth.getCurrentUser();
+
                         }
                     }
                 });
