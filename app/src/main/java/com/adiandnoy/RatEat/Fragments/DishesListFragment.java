@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.adiandnoy.RatEat.DishListViewModel;
 import com.adiandnoy.RatEat.R;
@@ -30,7 +31,7 @@ public class DishesListFragment extends Fragment {
     ProgressBar pr;
     DishListViewModel viewModel;
     DishAdapter dishAdapter;
-
+    SwipeRefreshLayout sref;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -60,6 +61,16 @@ public class DishesListFragment extends Fragment {
                 dishAdapter.data =viewModel.getList();
             }
         });
+
+        sref = view.findViewById(R.id.DishList_swipe);
+        sref.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                sref.setRefreshing(true);
+                reloadData();
+
+            }
+        });
         return view;
     }
 
@@ -69,6 +80,9 @@ public class DishesListFragment extends Fragment {
             @Override
             public void onComplete(Object data) {
                 pr.setVisibility(View.INVISIBLE);
+                sref.setRefreshing(false);
+
+                //Update the rv
                 dishAdapter.data = viewModel.getList();
                 rv.setAdapter(dishAdapter);
 

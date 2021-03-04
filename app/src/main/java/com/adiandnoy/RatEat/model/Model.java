@@ -31,7 +31,7 @@ public class Model {
     public LiveData<List<Dish>> getAllDishes() {
         if(dishList == null) {
             dishList = modelSql.getAllDishes();
-//            refreshAllDishes(null);
+            refreshAllDishes(null);
         }
         return dishList;
     }

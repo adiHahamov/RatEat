@@ -10,6 +10,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -29,8 +30,8 @@ public class ModelFirebase {
     public void getAllDishes(long lastUpdateDate, Model.GetAllDishesListener listener) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         List<Dish> dishList = new ArrayList<Dish>();
-
-        db.collection("dishes")
+        Timestamp ts = new Timestamp(lastUpdateDate,0);
+        db.collection("dishes").whereGreaterThanOrEqualTo("lastUpdated",ts)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
