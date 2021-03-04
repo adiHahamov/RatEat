@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,7 +15,7 @@ import com.adiandnoy.RatEat.model.Dish;
 import java.util.List;
 
 public class DishAdapter extends RecyclerView.Adapter<DishViewHolder>{
-    public MutableLiveData<List<Dish>> data;
+    public LiveData<List<Dish>> data;
     LayoutInflater inflater;
 
     public DishAdapter(LayoutInflater inflater){

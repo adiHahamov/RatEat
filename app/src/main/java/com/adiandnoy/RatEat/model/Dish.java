@@ -4,6 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.FieldValue;
+import com.google.firestore.v1.DocumentTransform;
+
+import java.util.HashMap;
+import java.util.Map;
+
 @Entity
 public class Dish {
     @PrimaryKey
@@ -14,7 +21,35 @@ public class Dish {
     private String ingredients;
     private String dishDescription;
     private String imageUrl;
-    private Float stars;
+    private Double stars;
+    private Long lastUpdated;
+
+    public Map<String,Object> toMap(){
+        HashMap<String,Object> result = new HashMap<>();
+        result.put("id",id);
+        result.put("dishName",dishName);
+        result.put("resturantName",resturantName);
+        result.put("ingredients",ingredients);
+        result.put("dishDescription",dishDescription);
+        result.put("imageUrl",imageUrl);
+        result.put("stars",stars);
+        result.put("lastUpdated", FieldValue.serverTimestamp());
+        return result;
+    }
+
+    public void fromMap(Map<String,Object> map){
+//        result.put("id",id);
+        id = (String) map.get("id");
+        dishName = (String) map.get("dishName");
+        resturantName = (String) map.get("resturantName");
+        ingredients = (String) map.get("ingredients");
+        dishDescription = (String) map.get("dishDescription");
+        imageUrl = (String) map.get("imageUrl");
+        stars = (Double) map.get("stars");
+        Timestamp timestamp =  (Timestamp)map.get("lastUpdated");
+        lastUpdated = timestamp.getSeconds();
+    }
+
 
     @NonNull
     public String getId() {
@@ -64,11 +99,19 @@ public class Dish {
         return imageUrl;
     }
 
-    public Float getStars() {
+    public Double getStars() {
         return stars;
     }
 
-    public void setStars(Float stars) {
+    public void setStars(Double stars) {
         this.stars = stars;
+    }
+
+    public Long getLastUpdated() {
+        return lastUpdated;
+    }
+
+    public void setLastUpdated(Long lastUpdated) {
+        this.lastUpdated = lastUpdated;
     }
 }

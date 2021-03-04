@@ -75,11 +75,12 @@ public class DishesListFragment extends Fragment {
                 dishAdapter.setOnClickListener(new DishAdapter.OnItemClickListener() {
                     @Override
                     public void onItemClick(int position) {
-                        Float startsNumber = Float.valueOf(0);
+                        double starsNumber = 0.0;
                         if (viewModel.getList().getValue().get(position).getStars() != null){
-                            startsNumber = viewModel.getList().getValue().get(position).getStars();
+                            starsNumber = viewModel.getList().getValue().get(position).getStars();
                         }
-                        DishesListFragmentDirections.ActionDishListFragmentToDishDetailsFragment dishInfoAction = DishesListFragmentDirections.actionDishListFragmentToDishDetailsFragment(viewModel.getList().getValue().get(position).getImageUrl(),viewModel.getList().getValue().get(position).getDishName(),viewModel.getList().getValue().get(position).getDishDescription(),viewModel.getList().getValue().get(position).getResturantName(),viewModel.getList().getValue().get(position).getIngredients(),startsNumber);
+                        float starsNumberf = (float)starsNumber;
+                        DishesListFragmentDirections.ActionDishListFragmentToDishDetailsFragment dishInfoAction = DishesListFragmentDirections.actionDishListFragmentToDishDetailsFragment(viewModel.getList().getValue().get(position).getImageUrl(),viewModel.getList().getValue().get(position).getDishName(),viewModel.getList().getValue().get(position).getDishDescription(),viewModel.getList().getValue().get(position).getResturantName(),viewModel.getList().getValue().get(position).getIngredients(),starsNumberf);
                         Navigation.findNavController(getView()).navigate(dishInfoAction);
                     }
                 });

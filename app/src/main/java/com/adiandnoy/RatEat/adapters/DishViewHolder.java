@@ -42,7 +42,10 @@ public class DishViewHolder extends RecyclerView.ViewHolder{
             Picasso.get().load(dish.getImageUrl()).placeholder(R.drawable.dish).into(dishImage);
         }
         if (dish.getStars() != null) {
-            ratingBar.setRating(dish.getStars());
+//            ratingBar.
+            double d  =  dish.getStars();
+            float f = (float)d;
+            ratingBar.setRating(f);
         }
         this.position = position;
     }
