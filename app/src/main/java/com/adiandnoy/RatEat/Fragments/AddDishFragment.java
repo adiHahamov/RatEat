@@ -72,7 +72,9 @@ public class AddDishFragment extends Fragment {
                 dish.setDishDescription(description.getText().toString());
                 dish.setResturantName(resturant.getText().toString());
                 dish.setIngredients(ingredient.getText().toString());
-                dish.setStars(dishStars.getRating());
+                float f  = dishStars.getRating();
+                double d = (double) f;
+                dish.setStars(d);
 
                 //Save the image
                 BitmapDrawable drawable = (BitmapDrawable) dishImage.getDrawable();

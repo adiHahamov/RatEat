@@ -10,6 +10,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -26,18 +27,20 @@ import java.util.List;
 import java.util.Map;
 
 public class ModelFirebase {
-    public void getAllDishes(Model.GetAllDishesListener listener) {
+    public void getAllDishes(long lastUpdateDate, Model.GetAllDishesListener listener) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         List<Dish> dishList = new ArrayList<Dish>();
-
-        db.collection("dishes")
+        Timestamp ts = new Timestamp(lastUpdateDate,0);
+        db.collection("dishes").whereGreaterThanOrEqualTo("lastUpdated",ts)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                Dish dish = document.toObject(Dish.class);
+                                Dish dish = new Dish();
+                                dish.fromMap(document.getData());
+//                                Dish dish = document.toObject(Dish.class);
                                 dishList.add(dish);
                             }
 //                            return dishList;
@@ -54,7 +57,7 @@ public class ModelFirebase {
 
 // Add a new document with a generated ID
         db.collection("dishes").document(dish.getId())
-                .set(dish)
+                .set(dish.toMap())
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
@@ -101,13 +104,16 @@ public class ModelFirebase {
     public void getDish(String id, Model.GetDisheListener listener) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("dishes").document(id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            Dish dish = null;
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 Dish dish = null;
                 if (task.isSuccessful()) {
                     DocumentSnapshot doc = task.getResult();
                     if (doc != null) {
-                        dish = task.getResult().toObject(Dish.class);
+                        dish = new Dish();
+                        dish.fromMap(task.getResult().getData());
+//                        dish = task.getResult().toObject(Dish.class);
                     }
                 }
                 listener.onComplete(dish);
@@ -165,24 +171,4 @@ public class ModelFirebase {
         });
     }
 
-    public void getAllDishesForPerson(Model.GetAllDishesForPersonListener listener) {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        List<Dish> dishList = new ArrayList<Dish>();
-
-        db.collection("dishes") .whereEqualTo("capital", true)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Dish dish = document.toObject(Dish.class);
-                                dishList.add(dish);
-                            }
-//                            return dishList;
-                        }
-                        listener.onComplete(dishList);
-                    }
-                });
-    }
 }

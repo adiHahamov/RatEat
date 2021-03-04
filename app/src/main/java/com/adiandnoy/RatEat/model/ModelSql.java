@@ -2,6 +2,9 @@ package com.adiandnoy.RatEat.model;
 
 import android.os.AsyncTask;
 
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+
 import java.util.List;
 
 public class ModelSql {
@@ -11,23 +14,24 @@ public class ModelSql {
         void onComplete(List<Dish> data);
     }
 
-    public void getAllDishes(Model.GetAllDishesListener listener) {
-        class MyAsyncTask extends AsyncTask {
-            List<Dish> data;
-            @Override
-            protected Object doInBackground(Object[] objects) {
-                data = AppLocalDB.db.dishDao().getAllDishes();
-                return null;
-            }
-
-            @Override
-            protected void onPostExecute(Object o) {
-                super.onPostExecute(o);
-                listener.onComplete(data);
-            }
-        }
-        MyAsyncTask task = new MyAsyncTask();
-        task.execute();
+    public LiveData<List<Dish>> getAllDishes() {
+        return AppLocalDB.db.dishDao().getAllDishes();
+//        class MyAsyncTask extends AsyncTask {
+//            List<Dish> data;
+//            @Override
+//            protected Object doInBackground(Object[] objects) {
+//                data = AppLocalDB.db.dishDao().getAllDishes();
+//                return null;
+//            }
+//
+//            @Override
+//            protected void onPostExecute(Object o) {
+//                super.onPostExecute(o);
+//                listener.onComplete(data);
+//            }
+//        }
+//        MyAsyncTask task = new MyAsyncTask();
+//        task.execute();
     }
 
     public interface AddDisheListener{
