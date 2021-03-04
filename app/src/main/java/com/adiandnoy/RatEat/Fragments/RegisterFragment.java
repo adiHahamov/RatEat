@@ -1,5 +1,7 @@
 package com.adiandnoy.RatEat.Fragments;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -8,12 +10,12 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +36,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.Executor;
 
@@ -60,7 +63,6 @@ public class RegisterFragment extends Fragment {
         name =  view.findViewById(R.id.input_first_name);
         lastName =  view.findViewById(R.id.input_last_name);
         mail =  view.findViewById(R.id.input_email);
-//        mail.getText().toString();
         password =  view.findViewById(R.id.input_password);
         saveUserButton = view.findViewById(R.id.save_user_btn);
         userImage = view.findViewById(R.id.input_profile_img);
@@ -85,10 +87,6 @@ public class RegisterFragment extends Fragment {
 
                 User user = new User();
                 user.setId(UUID.randomUUID().toString());
-//                user.setName(name.getText().toString());
-//                user.setLastName(lastName.getText().toString());
-//                user.setMail(mail.getText().toString());
-//                user.setPassword(password.getText().toString());
 
                 //Save the image
                 BitmapDrawable drawable = (BitmapDrawable)userImage.getDrawable();
@@ -98,7 +96,7 @@ public class RegisterFragment extends Fragment {
                     @Override
                     public void onComplete(String url) {
                         if (url == null){
-
+                            displayFailedError();
                         }else {
                             user.setImageUrl(url);
                             String email = mail.getText().toString();
@@ -111,35 +109,12 @@ public class RegisterFragment extends Fragment {
                                         Log.d("onComplete","done");
 //                                        progressBar.setVisibility(View.INVISIBLE);
                                         Toast.makeText(getActivity(), "User has been registered successfully!", Toast.LENGTH_LONG).show();
-//                                        User user = new User();
-//                                         user.setName(name.getText().toString());
-//                                         user.setLastName(lastName.getText().toString());
-//                                         user.setMail(mail.getText().toString());
-//                                         user.setPassword(password.getText().toString());
-//
-//                                        Model.instance.addUser(user, new Model.AddUserListener() {
-//                                            @Override
-//                                            public void onComplete() {
-////                                                final NavController navController = Navigation.findNavController(view);
-////                                                navController.navigate(R.id.signInFragment);
-//                                            }
-//                                        });
-
-//                                        FirebaseUser currentUser = mAuth.getCurrentUser();
                                     }
                                     else{
                                         Toast.makeText(getContext(), "Failed to signUp! please check your credentials", Toast.LENGTH_SHORT).show();
-//                                        progressBar.setVisibility(View.INVISIBLE);
-//                                        signUpBtn.setVisibility(View.VISIBLE);
                                     }
                                 }
                             });
-//                            Model.instance.addUser(user,new Model.AddUserListener() {
-//                                @Override
-//                                public void onComplete() {
-//
-//                                }
-//                            });
 
                             user.setName(name.getText().toString());
                             user.setLastName(lastName.getText().toString());
@@ -149,105 +124,72 @@ public class RegisterFragment extends Fragment {
                             Model.instance.addUser(user, new Model.AddUserListener() {
                                 @Override
                                 public void onComplete() {
-//                                    final NavController navController = Navigation.findNavController(view);
-//                                    Navigation.findNavController(view)
-//                                            .navigate(R.id.action_registerFragment_to_studentListFragment);
                                 }
                             });
+                            FirebaseUser currentUser = mAuth.getCurrentUser();
+
                         }
                     }
                 });
             }
         });
 
-//        FirebaseUser currentUser = mAuth.getCurrentUser();
         return view;
     }
-
-//    @Override
-//    public void onStart() {
-//        super.onStart();
-//        // Check if user is signed in (non-null) and update UI accordingly.
-//        FirebaseUser currentUser = mAuth.getCurrentUser();
-//        if(currentUser != null){
-//            currentUser.reload();
-//        }
-//    }
-
-//    private void createAccount(String email, String password) {
-//        Log.d(TAG, "createAccount:" + email);
-//        if (!validateForm()) {
-//            return;
-//        }
-
-//        showProgressBar();
-
-        // [START create_user_with_email]
-/*        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener((Executor) this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "createUserWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-//                            updateUI(user);
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                            Toast.makeText(getActivity(), "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-//                            updateUI(null);
-                        }
-
-                        // [START_EXCLUDE]
-//                        hideProgressBar();
-                        // [END_EXCLUDE]
-                    }
-                });*/
-
-//        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//            @Override
-//            public void onComplete(@NonNull Task<AuthResult> task) {
-//                if (task.isSuccessful()) {
-//                    // Sign in success, update UI with the signed-in user's information
-//                    Log.d(TAG, "createUserWithEmail:success");
-//                    FirebaseUser user = mAuth.getCurrentUser();
-////                            updateUI(user);
-//                } else {
-//                    // If sign in fails, display a message to the user.
-//                    Log.w(TAG, "createUserWithEmail:failure", task.getException());
-//                    Toast.makeText(getActivity(), "Authentication failed.",
-//                            Toast.LENGTH_SHORT).show();
-////                            updateUI(null);
-//                }
-//
-//                // [START_EXCLUDE]
-////                        hideProgressBar();
-//                // [END_EXCLUDE]
-//            }
-//        });
-        // [END create_user_with_email]
-//    }
-
+    private void displayFailedError() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("Operation Failed");
+        builder.setMessage("Saving image failed, please try again later...");
+        builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        builder.show();
+    }
     private boolean validateForm() {
         boolean valid = true;
+        String nameS = Objects.requireNonNull(name.getText()).toString();
+        String lastNameS = Objects.requireNonNull(lastName.getText()).toString();
+        String mailS = Objects.requireNonNull(mail.getText()).toString();
+        String passwordS = Objects.requireNonNull(password.getText()).toString();
 
-        String email = mail.getText().toString();
-        if (TextUtils.isEmpty(email)) {
-            mail.setError("Required.");
-            valid = false;
-        } else {
-            mail.setError(null);
-        }
 
-        String convPassword = password.getText().toString();
-        if (TextUtils.isEmpty(convPassword)) {
-            password.setError("Required.");
-            valid = false;
-        } else {
-            password.setError(null);
+        if(name == null || TextUtils.isEmpty(nameS) ||
+                lastName == null ||  TextUtils.isEmpty(lastNameS) ||
+                mail == null || TextUtils.isEmpty(mailS) ||
+                password == null || TextUtils.isEmpty(passwordS)) {
+            Toast.makeText(getContext(), "Please fill all fields to Sign Up", Toast.LENGTH_SHORT).show();
+           valid = false;
         }
+        if(nameS.length() > 60) {
+            Toast.makeText(getContext(), "The entered User Name is too long", Toast.LENGTH_SHORT).show();
+            valid = false;
+        }
+        if(mailS.length() > 200 || !Patterns.EMAIL_ADDRESS.matcher(mailS).matches()) {
+            Toast.makeText(getContext(), "The entered Email is wrong", Toast.LENGTH_SHORT).show();
+            valid = false;
+        }
+        if(passwordS.length() < 6) {
+            Toast.makeText(getContext(), "The entered password must be longer than 6 characters", Toast.LENGTH_SHORT).show();
+            valid = false;
+        }
+//        String email = mail.getText().toString();
+//        if (TextUtils.isEmpty(email)) {
+//            mail.setError("Required.");
+//            valid = false;
+//        } else {
+//            mail.setError(null);
+//        }
+//
+//        String convPassword = password.getText().toString();
+//        if (TextUtils.isEmpty(convPassword)) {
+//            password.setError("Required.");
+//            valid = false;
+//        } else {
+//            password.setError(null);
+//        }
 
         return valid;
     }
