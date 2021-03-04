@@ -44,25 +44,25 @@ public class ProfileFragment extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         dishesList.setLayoutManager(layoutManager);
 
-        Model.instance.getAllDishes(new Model.GetAllDishesListener() {
-            @Override
-            public void onComplete(List<Dish> data) {
-                myDishes = data;
-//                for (Dish dish:data) {
-                myDishPicAdapter adapter = new myDishPicAdapter(getLayoutInflater());
-                adapter.data = data;
-                dishesList.setAdapter(adapter);
-
-                adapter.setOnClickListener(new myDishPicAdapter.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(int position) {
-//                            DishesListFragmentDirections.actionDishListFragmentToDishDetailsFragment("noy");
-                        Navigation.findNavController(view).navigate(R.id.action_DishListFragment_to_dishDetailsFragment);
-                    }
-                });
-//                }
-            }
-        });
+//        Model.instance.getAllDishes(new Model.GetAllDishesListener() {
+//            @Override
+//            public void onComplete(List<Dish> data) {
+//                myDishes = data;
+////                for (Dish dish:data) {
+//                myDishPicAdapter adapter = new myDishPicAdapter(getLayoutInflater());
+//                adapter.data = data;
+//                dishesList.setAdapter(adapter);
+//
+//                adapter.setOnClickListener(new myDishPicAdapter.OnItemClickListener() {
+//                    @Override
+//                    public void onItemClick(int position) {
+////                            DishesListFragmentDirections.actionDishListFragmentToDishDetailsFragment("noy");
+//                        Navigation.findNavController(view).navigate(R.id.action_DishListFragment_to_dishDetailsFragment);
+//                    }
+//                });
+////                }
+//            }
+//        });
         return view;
     }
 }

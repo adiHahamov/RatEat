@@ -3,6 +3,8 @@ package com.adiandnoy.RatEat.model;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 
+import androidx.lifecycle.MutableLiveData;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -11,13 +13,28 @@ public class Model {
     ModelFirebase modelFirebase = new ModelFirebase();
     ModelSql modelSql = new ModelSql();
 
+    public interface Listener<T>{
+        void onComplete(T data);
+    }
     //Dish function
     public interface GetAllDishesListener{
         void onComplete(List<Dish> data);
     }
 
-    public void getAllDishes(GetAllDishesListener listener) {
-        modelFirebase.getAllDishes(listener);
+    MutableLiveData<List<Dish>> dishList = new MutableLiveData<List<Dish>>();
+
+    public MutableLiveData<List<Dish>> getAllDishes() {
+        return dishList;
+    }
+
+    public void refreshAllDishes(final Listener listener){
+        modelFirebase.getAllDishes(new GetAllDishesListener() {
+            @Override
+            public void onComplete(List<Dish> data) {
+                dishList.setValue(data);
+                listener.onComplete(null);
+            }
+        });
     }
 
     public interface GetAllDishesForPersonListener{

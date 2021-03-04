@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.MutableLiveData;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.adiandnoy.RatEat.R;
@@ -13,7 +14,7 @@ import com.adiandnoy.RatEat.model.Dish;
 import java.util.List;
 
 public class DishAdapter extends RecyclerView.Adapter<DishViewHolder>{
-    public List<Dish> data;
+    public MutableLiveData<List<Dish>> data;
     LayoutInflater inflater;
 
     public DishAdapter(LayoutInflater inflater){
@@ -40,12 +41,12 @@ public class DishAdapter extends RecyclerView.Adapter<DishViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull DishViewHolder holder, int position) {
-        Dish dish = data.get(position);
+        Dish dish = data.getValue().get(position);
         holder.bindData(dish,position);
     }
 
     @Override
     public int getItemCount() {
-        return data.size();
+        return data.getValue().size();
     }
 }
