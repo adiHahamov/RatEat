@@ -8,6 +8,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import android.provider.MediaStore;
@@ -148,18 +149,18 @@ public class RegisterFragment extends Fragment {
                             Model.instance.addUser(user, new Model.AddUserListener() {
                                 @Override
                                 public void onComplete() {
-//                                                final NavController navController = Navigation.findNavController(view);
-//                                                navController.navigate(R.id.signInFragment);
+//                                    final NavController navController = Navigation.findNavController(view);
+//                                    Navigation.findNavController(view)
+//                                            .navigate(R.id.action_registerFragment_to_studentListFragment);
                                 }
                             });
-                            FirebaseUser currentUser = mAuth.getCurrentUser();
-
                         }
                     }
                 });
             }
         });
 
+//        FirebaseUser currentUser = mAuth.getCurrentUser();
         return view;
     }
 
