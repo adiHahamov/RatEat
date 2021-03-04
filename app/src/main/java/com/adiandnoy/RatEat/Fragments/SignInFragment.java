@@ -18,9 +18,10 @@ import androidx.navigation.Navigation;
 import com.adiandnoy.RatEat.R;
 import com.adiandnoy.RatEat.model.Dish;
 import com.adiandnoy.RatEat.model.Model;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class SignInFragment extends Fragment{
-//    Fragment[] tabs = new Fragment[3];
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -38,6 +39,7 @@ public class SignInFragment extends Fragment{
                         .navigate(R.id.action_navBar_to_register);
             }
         });
+
 //        SpannableString content = new SpannableString("Content");
 //        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
 //        textView.setText(content);
