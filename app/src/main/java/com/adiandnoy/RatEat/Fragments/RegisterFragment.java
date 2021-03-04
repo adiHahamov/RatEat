@@ -68,6 +68,8 @@ public class RegisterFragment extends Fragment {
         userImage = view.findViewById(R.id.input_profile_img);
         editImage = view.findViewById(R.id.editImageRegisterFragment);
 
+        userImage.setImageResource(R.drawable.profile);
+
         mAuth = FirebaseAuth.getInstance();
 
         editImage.setOnClickListener(new View.OnClickListener() {
@@ -175,33 +177,39 @@ public class RegisterFragment extends Fragment {
             Toast.makeText(getContext(), "The entered password must be longer than 6 characters", Toast.LENGTH_SHORT).show();
             valid = false;
         }
-//        String email = mail.getText().toString();
-//        if (TextUtils.isEmpty(email)) {
-//            mail.setError("Required.");
-//            valid = false;
-//        } else {
-//            mail.setError(null);
-//        }
-//
-//        String convPassword = password.getText().toString();
-//        if (TextUtils.isEmpty(convPassword)) {
-//            password.setError("Required.");
-//            valid = false;
-//        } else {
-//            password.setError(null);
-//        }
 
         return valid;
     }
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
-    private void editImage() {
-        Intent takePictureIntent = new Intent(
-                MediaStore.ACTION_IMAGE_CAPTURE);
-        if (takePictureIntent.resolveActivity(getActivity().getPackageManager()) != null) {
-            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+//    private void editImage() {
+        private void editImage() {
+            final CharSequence[] options = {"Take Photo", "Choose from Gallery", "Cancel"};
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setTitle("Choose your profile picture");
+
+            builder.setItems(options, new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int item) {
+
+                    if (options[item].equals("Take Photo")) {
+                        Intent takePicture = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                        startActivityForResult(takePicture, 0);
+
+                    } else if (options[item].equals("Choose from Gallery")) {
+                        Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                        startActivityForResult(pickPhoto, 1);
+
+                    } else if (options[item].equals("Cancel")) {
+                        dialog.dismiss();
+                    }
+                }
+            });
+            builder.show();
         }
-    }
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
