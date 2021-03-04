@@ -29,7 +29,8 @@ public class DishesListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_dishes_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_dishes_list, container, false);
+//        RecyclerView rv = view.findViewById(R.id.studentlistfrag_list);
 
         pr =  view.findViewById(R.id.progressBar_dishe_list);
         pr.setVisibility(View.INVISIBLE);
@@ -51,6 +52,7 @@ public class DishesListFragment extends Fragment {
             public void onComplete(List<Dish> data) {
                 pr.setVisibility(View.INVISIBLE);
                 dishList = data;
+//                for (Dish dish:data) {
                 DishAdapter adapter = new DishAdapter(getLayoutInflater());
                 adapter.data = data;
                 rv.setAdapter(adapter);
