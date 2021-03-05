@@ -66,7 +66,7 @@ public class ProfileFragment extends Fragment {
         List<Dish> myDish = new ArrayList<Dish>();
 
         for (Dish dishP : viewModel.getList().getValue()) {
-            if (dishP.getUserID().equals(uid)) {
+            if (dishP.getUserID().equals(uid) && dishP.getDeleted().equals(false)) {
                 myDish.add(dishP);
             }
         }
@@ -100,7 +100,7 @@ public class ProfileFragment extends Fragment {
                 List<Dish> myDish = new ArrayList<Dish>();
 
                 for (Dish dishP : viewModel.getList().getValue()) {
-                if (dishP.getUserID().equals(uid)) {
+                if (dishP.getUserID().equals(uid)&& dishP.getDeleted().equals(false)) {
                     myDish.add(dishP);
                 }
             }
