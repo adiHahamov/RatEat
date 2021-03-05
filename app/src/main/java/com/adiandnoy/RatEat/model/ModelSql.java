@@ -16,22 +16,6 @@ public class ModelSql {
 
     public LiveData<List<Dish>> getAllDishes() {
         return AppLocalDB.db.dishDao().getAllDishes();
-//        class MyAsyncTask extends AsyncTask {
-//            List<Dish> data;
-//            @Override
-//            protected Object doInBackground(Object[] objects) {
-//                data = AppLocalDB.db.dishDao().getAllDishes();
-//                return null;
-//            }
-//
-//            @Override
-//            protected void onPostExecute(Object o) {
-//                super.onPostExecute(o);
-//                listener.onComplete(data);
-//            }
-//        }
-//        MyAsyncTask task = new MyAsyncTask();
-//        task.execute();
     }
 
     public interface AddDisheListener{

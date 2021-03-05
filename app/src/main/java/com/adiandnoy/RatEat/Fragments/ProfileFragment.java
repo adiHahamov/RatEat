@@ -38,6 +38,7 @@ public class ProfileFragment extends Fragment {
     List<Dish> myDishes;
     myDishPicAdapter dishAdapter;
     DishListViewModel viewModel;
+    ImageView imageViewProfile;
 
     FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
     String uid = currentUser.getUid();
@@ -52,7 +53,7 @@ public class ProfileFragment extends Fragment {
 
         dtls_btn = view.findViewById(R.id.my_dtls_btn);
         dishesList = view.findViewById(R.id.rv_my_dish);
-
+        imageViewProfile = view.findViewById(R.id.profilePic);
         dishesList.setHasFixedSize(true);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
@@ -78,7 +79,7 @@ public class ProfileFragment extends Fragment {
                 List<Dish> myDish = new ArrayList<Dish>();
 //                dishAdapter.notifyDataSetChanged();
                 for (Dish dishP : viewModel.getList().getValue()) {
-                    if (dishP.getUserID().equals(uid)) {
+                    if (dishP.getUserID().equals(uid) && dishP.getDeleted().equals(false)) {
                         myDish.add(dishP);
                     }
                 }
