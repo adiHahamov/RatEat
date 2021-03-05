@@ -24,20 +24,22 @@
 
     <ImageButton
         android:id="@+id/editBtn"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="@id/image_my_list_row"
-        app:layout_constraintStart_toStartOf="@id/image_my_list_row"
+        android:layout_width="73dp"
+        android:layout_height="67dp"
+        android:background="#FFBFB1B1"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@+id/image_my_list_row"
+        app:layout_constraintEnd_toEndOf="@+id/image_my_list_row"
         app:srcCompat="@drawable/ic_edit" />
 
     <ImageButton
         android:id="@+id/delBtn"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="@id/image_my_list_row"
-        app:layout_constraintEnd_toEndOf="@+id/image_my_list_row"
+        android:layout_width="73dp"
+        android:layout_height="67dp"
+        android:background="#BFB1B1"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@+id/image_my_list_row"
+        app:layout_constraintStart_toStartOf="@+id/image_my_list_row"
         app:srcCompat="@drawable/ic_delete" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
