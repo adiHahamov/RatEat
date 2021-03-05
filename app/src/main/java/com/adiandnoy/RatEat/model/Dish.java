@@ -21,6 +21,7 @@ public class Dish {
     private String ingredients;
     private String dishDescription;
     private String imageUrl;
+    private String userID;
     private Double stars;
     private Long lastUpdated;
 
@@ -33,6 +34,7 @@ public class Dish {
         result.put("dishDescription",dishDescription);
         result.put("imageUrl",imageUrl);
         result.put("stars",stars);
+        result.put("userID",userID);
         result.put("lastUpdated", FieldValue.serverTimestamp());
         return result;
     }
@@ -46,6 +48,7 @@ public class Dish {
         dishDescription = (String) map.get("dishDescription");
         imageUrl = (String) map.get("imageUrl");
         stars = (Double) map.get("stars");
+        userID = (String)map.get("userID");
         Timestamp timestamp =  (Timestamp)map.get("lastUpdated");
         lastUpdated = timestamp.getSeconds();
     }
@@ -113,5 +116,13 @@ public class Dish {
 
     public void setLastUpdated(Long lastUpdated) {
         this.lastUpdated = lastUpdated;
+    }
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 }
