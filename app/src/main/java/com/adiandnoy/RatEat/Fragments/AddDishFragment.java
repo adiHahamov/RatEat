@@ -59,7 +59,7 @@ public class AddDishFragment extends Fragment {
         }
         else{
             Toast.makeText(getContext(), "Not allowed! sign in first", Toast.LENGTH_LONG).show();
-//            navController.navigate(R.id.SignInFragment);
+            navController.navigate(R.id.tabBarFragment);
         }
     }
 
