@@ -29,6 +29,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
+        android:focusable="true"
         android:focusableInTouchMode="true"
         android:hint="Email"
         android:singleLine="true"
@@ -45,6 +46,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
+        android:focusable="true"
         android:focusableInTouchMode="true"
         android:hint="Last name"
         android:singleLine="true"
@@ -62,6 +64,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
+        android:focusable="auto"
         android:focusableInTouchMode="true"
         android:hint="Password"
         android:singleLine="true"
@@ -80,7 +83,7 @@
         android:layout_marginEnd="24dp"
         android:hint="First name"
         android:imeOptions="flagNoEnterAction"
-        android:selectAllOnFocus="true"
+        android:selectAllOnFocus="false"
         android:singleLine="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/input_last_name"
@@ -115,5 +118,17 @@
         android:src="@android:drawable/ic_menu_edit"
         app:layout_constraintBottom_toBottomOf="@+id/input_profile_img"
         app:layout_constraintEnd_toEndOf="@+id/input_profile_img" />
+
+    <ImageButton
+        android:id="@+id/backBtnFromRegister"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ic_back"
+        app:layout_constraintEnd_toStartOf="@+id/input_profile_img"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
