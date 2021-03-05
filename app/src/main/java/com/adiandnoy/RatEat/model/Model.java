@@ -83,9 +83,14 @@ public class Model {
     };
 
     interface DeleteDisheListener extends AddDisheListener{}
+    interface UpdateDishListener extends AddDisheListener{}
 
     public void deleteDish(Dish dish,DeleteDisheListener listener){
         modelFirebase.deleteDish(dish,listener);
+    };
+
+    public void updateDish(Dish dish, UpdateDishListener listener){
+        modelFirebase.updateDish(dish,listener);
     };
 
     //User function

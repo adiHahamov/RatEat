@@ -9,12 +9,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -41,25 +44,32 @@ public class ProfileFragment extends Fragment {
     ImageView imageViewProfile;
 
     FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-    String uid = currentUser.getUid();
-    
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_profile, container, false);
-        viewModel = new ViewModelProvider(this).get(DishListViewModel.class);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        final NavController navController = Navigation.findNavController(view);
+        currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        if(currentUser != null) {
+            showData();
+        }
+        else {
+            Toast.makeText(getContext(), "Not allowed! sign in first", Toast.LENGTH_LONG).show();
+            navController.navigate(R.id.tabBarFragment);
+        }
+    }
 
-        dtls_btn = view.findViewById(R.id.my_dtls_btn);
-        dishesList = view.findViewById(R.id.rv_my_dish);
-        imageViewProfile = view.findViewById(R.id.profilePic);
+    public void showData() {
+        viewModel = new ViewModelProvider(this).get(DishListViewModel.class);
+        String uid = currentUser.getUid();
+        dtls_btn = getView().findViewById(R.id.my_dtls_btn);
+        dishesList = getView().findViewById(R.id.rv_my_dish);
+        imageViewProfile = getView().findViewById(R.id.profilePic);
         dishesList.setHasFixedSize(true);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         dishesList.setLayoutManager(layoutManager);
 
-        reloadData();
+        reloadData(uid);
 
         dishAdapter = new myDishPicAdapter(getLayoutInflater());
 
@@ -70,7 +80,7 @@ public class ProfileFragment extends Fragment {
                 myDish.add(dishP);
             }
         }
-            dishAdapter.data = myDish;
+        dishAdapter.data = myDish;
 //        dishAdapter.data = viewModel.getList();
 
         viewModel.getList().observe(getViewLifecycleOwner(), new Observer<List<Dish>>() {
@@ -83,15 +93,21 @@ public class ProfileFragment extends Fragment {
                         myDish.add(dishP);
                     }
                 }
-                    dishAdapter.data = myDish;
+                dishAdapter.data = myDish;
 //                dishAdapter.data =viewModel.getList();
             }
         });
+    }
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
         return view;
     }
 
-    void reloadData(){
+    void reloadData(String uid){
 //        pr.setVisibility(View.VISIBLE);
         Model.instance.refreshAllDishes(new Model.Listener() {
             @Override

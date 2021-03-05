@@ -141,7 +141,8 @@ public class SignInFragment extends Fragment{
 //                        if(currentUser.isEmailVerified()){
 //                            progressBar.setVisibility(View.INVISIBLE);
                             final NavController navController = Navigation.findNavController(getView());
-                            navController.navigate(R.id.action_tabBarFragment_to_dishesListFragment);
+                        navController.navigate(R.id.studentListFragment);
+//                            navController.navigate(R.id.action_tabBarFragment_to_dishesListFragment);
 //                        }
 //                        else{
 //                            progressBar.setVisibility(View.INVISIBLE);

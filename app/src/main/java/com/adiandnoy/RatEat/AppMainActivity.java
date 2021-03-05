@@ -92,6 +92,7 @@ public class AppMainActivity extends AppCompatActivity {
 //                navController.navigate(R.id.goBackToSignIn);
 //            }
 //        }
+
         return NavigationUI.onNavDestinationSelected(item, navController);
     }
 

@@ -143,6 +143,23 @@ public class ModelFirebase {
                 });
     }
 
+    public void updateDish(Dish dish, Model.UpdateDishListener listener) {
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        db.collection("dishes").document(dish.getId()).set(dish).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                listener.onComplete();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d("TAG", "Error update document", e);
+                listener.onComplete();
+            }
+        });
+    }
 
 
     public void uploadImage(Bitmap imageBmp, String name,  Model.uploadImageListener listener){

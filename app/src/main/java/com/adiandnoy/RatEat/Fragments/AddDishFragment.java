@@ -39,7 +39,7 @@ import static android.app.Activity.RESULT_OK;
 
 public class AddDishFragment extends Fragment {
 
-    private FirebaseUser currentUser;
+    private FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
     TextInputEditText name;
     TextInputEditText description;
     TextInputEditText resturant;
@@ -53,7 +53,6 @@ public class AddDishFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         setHasOptionsMenu(true);
         final NavController navController = Navigation.findNavController(view);
-        currentUser = FirebaseAuth.getInstance().getCurrentUser();
         if(currentUser != null) {
             showData();
         }
@@ -66,7 +65,7 @@ public class AddDishFragment extends Fragment {
     private void showData() {
         Button addDish = getView().findViewById(R.id.save_dish_buttom);
         ImageButton backBtn = getView().findViewById(R.id.backBtnFromAdd);
-        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+//        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         String uid = currentUser.getUid();
 
         name = getView().findViewById(R.id.input_dish_name);

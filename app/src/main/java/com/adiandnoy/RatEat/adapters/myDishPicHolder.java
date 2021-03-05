@@ -5,6 +5,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.adiandnoy.RatEat.R;
@@ -41,7 +43,18 @@ public class myDishPicHolder extends RecyclerView.ViewHolder {
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                final NavController navController = Navigation.findNavController(view);
+                navController.navigate(R.id.action_profileFragment_to_updateDishFragment);
+//                Model.instance.addDish(dish, new Model.AddDisheListener() {
+//                    @Override
+//                    public void onComplete() {
+//                        Model.instance.refreshAllDishes(new Model.Listener() {
+//                            @Override
+//                            public void onComplete(Object data) {
+//                            }
+//                        });
+//                    }
+//                });
             }
         });
 

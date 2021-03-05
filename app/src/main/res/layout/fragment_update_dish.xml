@@ -4,61 +4,56 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0FFFFFFF"
-    tools:context=".Fragments.RegisterFragment">
-
-    <!-- TODO: Update blank fragment layout -->
+    android:background="#FFFFFF"
+    tools:context=".Fragments.UpdateDishFragment">
 
     <ImageView
-        android:id="@+id/input_profile_img"
-        android:layout_width="279dp"
-        android:layout_height="246dp"
+        android:id="@+id/editImage"
+        android:layout_width="179dp"
+        android:layout_height="162dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/input_first_name"
+        android:src="@android:drawable/ic_menu_gallery"
+        app:layout_constraintBottom_toTopOf="@+id/editDishName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/ic_profile" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/input_email"
+        android:id="@+id/editDishIngredient"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
-        android:focusable="true"
         android:focusableInTouchMode="true"
-        android:hint="Email"
-        android:singleLine="true"
+        android:hint="Dish ingredients"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/input_first_name"
+        app:layout_constraintEnd_toStartOf="@+id/editDishName"
         app:layout_constraintHorizontal_bias="0.958"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_last_name" />
+        app:layout_constraintTop_toBottomOf="@+id/editResturantName" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/input_last_name"
+        android:id="@+id/editResturantName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
-        android:focusable="true"
         android:focusableInTouchMode="true"
-        android:hint="Last name"
+        android:hint="Resturant name"
         android:singleLine="true"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/input_password"
+        app:layout_constraintEnd_toStartOf="@+id/editDishDescription"
         app:layout_constraintHorizontal_bias="0.963"
-        app:layout_constraintStart_toEndOf="@+id/input_first_name"
+        app:layout_constraintStart_toEndOf="@+id/editDishName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_first_name" />
+        app:layout_constraintTop_toBottomOf="@+id/editDishName" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/input_password"
+        android:id="@+id/editDishDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -66,50 +61,48 @@
         android:layout_marginEnd="24dp"
         android:focusable="auto"
         android:focusableInTouchMode="true"
-        android:hint="Password"
-        android:singleLine="true"
-        android:inputType="textPassword"
+        android:hint="Dish description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/input_last_name"
+        app:layout_constraintStart_toEndOf="@+id/editResturantName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_email" />
+        app:layout_constraintTop_toBottomOf="@+id/editDishIngredient" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/input_first_name"
+        android:id="@+id/editDishName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
-        android:hint="First name"
-        android:imeOptions="flagNoEnterAction"
+        android:hint="Dish name"
         android:selectAllOnFocus="false"
-        android:singleLine="true"
+        android:singleLine="false"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/input_last_name"
+        app:layout_constraintEnd_toStartOf="@+id/editResturantName"
         app:layout_constraintHorizontal_bias="0.944"
-        app:layout_constraintStart_toEndOf="@+id/input_email"
+        app:layout_constraintStart_toEndOf="@+id/editDishIngredient"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_profile_img" />
+        app:layout_constraintTop_toBottomOf="@+id/editImage" />
 
     <Button
-        android:id="@+id/save_user_btn"
+        android:id="@+id/saveUpdatedDish"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="161dp"
+        android:layout_marginStart="162dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="162dp"
+        android:gravity="center_horizontal"
         android:text="Save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_password"
-        app:layout_constraintVertical_bias="0.223" />
+        app:layout_constraintTop_toBottomOf="@+id/editDishRatingBar"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
-        android:id="@+id/editImageRegisterFragment"
+        android:id="@+id/editImageUpdateDishFragment"
         android:layout_width="72dp"
         android:layout_height="59dp"
         android:layout_marginEnd="40dp"
@@ -117,18 +110,29 @@
         android:background="#00FFFFFF"
         android:scaleType="fitXY"
         android:src="@android:drawable/ic_menu_edit"
-        app:layout_constraintBottom_toBottomOf="@+id/input_profile_img"
-        app:layout_constraintEnd_toEndOf="@+id/input_profile_img" />
+        app:layout_constraintBottom_toBottomOf="@+id/editImage"
+        app:layout_constraintEnd_toEndOf="@+id/editImage" />
+
+    <RatingBar
+        android:id="@+id/editDishRatingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="162dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="162dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editDishDescription" />
 
     <ImageButton
-        android:id="@+id/backBtnFromRegister"
+        android:id="@+id/backBtnFromUpd"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:src="@drawable/ic_back"
-        app:layout_constraintEnd_toStartOf="@+id/input_profile_img"
+        app:layout_constraintEnd_toStartOf="@+id/editImage"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
