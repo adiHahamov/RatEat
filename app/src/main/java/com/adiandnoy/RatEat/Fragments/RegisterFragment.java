@@ -88,13 +88,12 @@ public class RegisterFragment extends Fragment {
                 }
 
                 User user = new User();
-                user.setId(UUID.randomUUID().toString());
 
                 //Save the image
                 BitmapDrawable drawable = (BitmapDrawable)userImage.getDrawable();
                 Bitmap bitmap = drawable.getBitmap();
 
-                Model.instance.uploadImage(bitmap, user.getId(), new Model.uploadImageListener() {
+                Model.instance.uploadImage(bitmap, UUID.randomUUID().toString(), new Model.uploadImageListener() {
                     @Override
                     public void onComplete(String url) {
                         if (url == null){
@@ -110,6 +109,18 @@ public class RegisterFragment extends Fragment {
                                     if(task.isSuccessful()) {
                                         Log.d("onComplete","done");
 //                                        progressBar.setVisibility(View.INVISIBLE);
+                                        FirebaseUser userAuth = mAuth.getCurrentUser();
+                                        user.setId(userAuth.getUid());
+                                        user.setName(name.getText().toString());
+                                        user.setLastName(lastName.getText().toString());
+                                        user.setMail(mail.getText().toString());
+                                        user.setPassword(password.getText().toString());
+
+                                        Model.instance.addUser(user, new Model.AddUserListener() {
+                                            @Override
+                                            public void onComplete() {
+                                            }
+                                        });
                                         Toast.makeText(getActivity(), "User has been registered successfully!", Toast.LENGTH_LONG).show();
                                     }
                                     else{
@@ -117,18 +128,6 @@ public class RegisterFragment extends Fragment {
                                     }
                                 }
                             });
-
-                            user.setName(name.getText().toString());
-                            user.setLastName(lastName.getText().toString());
-                            user.setMail(mail.getText().toString());
-                            user.setPassword(password.getText().toString());
-
-                            Model.instance.addUser(user, new Model.AddUserListener() {
-                                @Override
-                                public void onComplete() {
-                                }
-                            });
-                            FirebaseUser currentUser = mAuth.getCurrentUser();
 
                         }
                     }

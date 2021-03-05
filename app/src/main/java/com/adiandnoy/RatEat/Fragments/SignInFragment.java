@@ -137,18 +137,18 @@ public class SignInFragment extends Fragment{
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
-                        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-                        if(currentUser.isEmailVerified()){
+//                        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+//                        if(currentUser.isEmailVerified()){
 //                            progressBar.setVisibility(View.INVISIBLE);
                             final NavController navController = Navigation.findNavController(getView());
                             navController.navigate(R.id.action_tabBarFragment_to_dishesListFragment);
-                        }
-                        else{
+//                        }
+//                        else{
 //                            progressBar.setVisibility(View.INVISIBLE);
 //                            signInBtn.setVisibility(View.VISIBLE);
-                            currentUser.sendEmailVerification();
-                            Toast.makeText(getContext(), "Check your email to verify your account!", Toast.LENGTH_SHORT).show();
-                        }
+//                            currentUser.sendEmailVerification();
+//                            Toast.makeText(getContext(), "Check your email to verify your account!", Toast.LENGTH_SHORT).show();
+//                        }
                     }
                     else{
 //                        progressBar.setVisibility(View.INVISIBLE);

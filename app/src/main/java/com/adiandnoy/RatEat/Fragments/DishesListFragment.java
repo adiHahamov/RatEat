@@ -22,6 +22,8 @@ import com.adiandnoy.RatEat.R;
 import com.adiandnoy.RatEat.adapters.DishAdapter;
 import com.adiandnoy.RatEat.model.Dish;
 import com.adiandnoy.RatEat.model.Model;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.List;
 
@@ -39,6 +41,9 @@ public class DishesListFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_dishes_list, container, false);
 //        RecyclerView rv = view.findViewById(R.id.studentlistfrag_list);
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = currentUser.getUid();
+        String email = currentUser.getEmail();
         viewModel = new ViewModelProvider(this).get(DishListViewModel.class);
         pr =  view.findViewById(R.id.progressBar_dishe_list);
         pr.setVisibility(View.INVISIBLE);
