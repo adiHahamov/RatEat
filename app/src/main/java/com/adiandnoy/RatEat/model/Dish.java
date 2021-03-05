@@ -24,6 +24,7 @@ public class Dish {
     private String userID;
     private Double stars;
     private Long lastUpdated;
+    private Boolean isDeleted;
 
     public Map<String,Object> toMap(){
         HashMap<String,Object> result = new HashMap<>();
@@ -35,6 +36,7 @@ public class Dish {
         result.put("imageUrl",imageUrl);
         result.put("stars",stars);
         result.put("userID",userID);
+        result.put("isDeleted",isDeleted);
         result.put("lastUpdated", FieldValue.serverTimestamp());
         return result;
     }
@@ -49,6 +51,7 @@ public class Dish {
         imageUrl = (String) map.get("imageUrl");
         stars = (Double) map.get("stars");
         userID = (String)map.get("userID");
+        isDeleted = (Boolean)map.get("isDeleted");
         Timestamp timestamp =  (Timestamp)map.get("lastUpdated");
         lastUpdated = timestamp.getSeconds();
     }
@@ -108,6 +111,14 @@ public class Dish {
 
     public void setStars(Double stars) {
         this.stars = stars;
+    }
+
+    public Boolean getDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(Boolean deleted) {
+        isDeleted = deleted;
     }
 
     public Long getLastUpdated() {

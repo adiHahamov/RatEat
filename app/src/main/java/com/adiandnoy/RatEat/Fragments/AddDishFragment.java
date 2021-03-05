@@ -25,6 +25,8 @@ import com.adiandnoy.RatEat.R;
 import com.adiandnoy.RatEat.model.Dish;
 import com.adiandnoy.RatEat.model.Model;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.UUID;
 
@@ -46,6 +48,10 @@ public class AddDishFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_add_dish, container, false);
         Button addDish = view.findViewById(R.id.save_dish_buttom);
+
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = currentUser.getUid();
+        String email = currentUser.getEmail();
 
         name = view.findViewById(R.id.input_dish_name);
         description = view.findViewById(R.id.input_dish_description);
@@ -72,6 +78,8 @@ public class AddDishFragment extends Fragment {
                 dish.setDishDescription(description.getText().toString());
                 dish.setResturantName(resturant.getText().toString());
                 dish.setIngredients(ingredient.getText().toString());
+                dish.setUserID(uid);
+                dish.setDeleted(false);
                 float f  = dishStars.getRating();
                 double d = (double) f;
                 dish.setStars(d);
