@@ -9,6 +9,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.adiandnoy.RatEat.Fragments.ProfileFragmentDirections;
 import com.adiandnoy.RatEat.R;
 import com.adiandnoy.RatEat.model.Dish;
 import com.adiandnoy.RatEat.model.Model;
@@ -44,17 +45,15 @@ public class myDishPicHolder extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View view) {
                 final NavController navController = Navigation.findNavController(view);
-                navController.navigate(R.id.action_profileFragment_to_updateDishFragment);
-//                Model.instance.addDish(dish, new Model.AddDisheListener() {
-//                    @Override
-//                    public void onComplete() {
-//                        Model.instance.refreshAllDishes(new Model.Listener() {
-//                            @Override
-//                            public void onComplete(Object data) {
-//                            }
-//                        });
-//                    }
-//                });
+//                navController.navigate(R.id.action_profileFragment_to_updateDishFragment);
+                double starsNumber = 0.0;
+                if (dish.getStars() != null){
+                    starsNumber = dish.getStars();
+                }
+                float starsNumberf = (float)starsNumber;
+                ProfileFragmentDirections.ActionProfileFragmentToUpdateDishFragment dishUpdAction =
+                        ProfileFragmentDirections.actionProfileFragmentToUpdateDishFragment(dish.getImageUrl(),dish.getDishName(),dish.getDishDescription(),dish.getResturantName(),dish.getIngredients(),starsNumberf);
+                navController.navigate(dishUpdAction);
             }
         });
 

@@ -128,11 +128,16 @@ public class ProfileFragment extends Fragment {
                 dishAdapter.setOnClickListener(new myDishPicAdapter.OnItemClickListener() {
                     @Override
                     public void onItemClick(int position) {
-
+//                        double starsNumber = 0.0;
+//                        if (viewModel.getList().getValue().get(position).getStars() != null){
+//                            starsNumber = viewModel.getList().getValue().get(position).getStars();
+//                        }
+//                        float starsNumberf = (float)starsNumber;
+//                        ProfileFragmentDirections.ActionProfileFragmentToUpdateDishFragment dishUpdAction =
+//                        ProfileFragmentDirections.actionProfileFragmentToUpdateDishFragment(viewModel.getList().getValue().get(position).getImageUrl(),viewModel.getList().getValue().get(position).getDishName(),viewModel.getList().getValue().get(position).getDishDescription(),viewModel.getList().getValue().get(position).getResturantName(),viewModel.getList().getValue().get(position).getIngredients(),starsNumberf);
+//                        Navigation.findNavController(getView()).navigate(dishUpdAction);
                     }
                 });
-
-
             }
         });
     }

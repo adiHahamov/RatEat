@@ -101,5 +101,28 @@
         android:id="@+id/updateDishFragment"
         android:name="com.adiandnoy.RatEat.Fragments.UpdateDishFragment"
         android:label="fragment_update_dish"
-        tools:layout="@layout/fragment_update_dish" />
+        tools:layout="@layout/fragment_update_dish" >
+        <argument
+            android:name="dishImgUrl"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="dishName"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="dishDescription"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="resturantName"
+            app:argType="string"
+            app:nullable="true" />
+        <argument android:name="dishIngredients"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="stars"
+            app:argType="float" />
+    </fragment>
 </navigation>
