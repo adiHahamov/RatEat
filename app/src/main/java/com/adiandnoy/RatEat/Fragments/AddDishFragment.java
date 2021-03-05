@@ -51,7 +51,6 @@ public class AddDishFragment extends Fragment {
 
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         String uid = currentUser.getUid();
-        String email = currentUser.getEmail();
 
         name = view.findViewById(R.id.input_dish_name);
         description = view.findViewById(R.id.input_dish_description);
