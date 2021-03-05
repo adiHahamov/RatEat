@@ -13,6 +13,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import android.provider.MediaStore;
@@ -50,6 +51,7 @@ public class RegisterFragment extends Fragment {
     private FirebaseAuth mAuth;
     private static final String TAG = "EmailPassword";
 
+    ImageButton backBtn;
     TextInputEditText name;
     TextInputEditText lastName;
     TextInputEditText mail;
@@ -64,6 +66,7 @@ public class RegisterFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_register, container, false);
 
+        backBtn = view.findViewById(R.id.backBtnFromRegister);
         name =  view.findViewById(R.id.input_first_name);
         lastName =  view.findViewById(R.id.input_last_name);
         mail =  view.findViewById(R.id.input_email);
@@ -75,7 +78,7 @@ public class RegisterFragment extends Fragment {
         userImage.setImageResource(R.drawable.profile);
 
         mAuth = FirebaseAuth.getInstance();
-
+        name.requestFocus();
         editImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -83,6 +86,13 @@ public class RegisterFragment extends Fragment {
             }
         });
 
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final NavController navController = Navigation.findNavController(getView());
+                navController.navigate(R.id.action_registerFragment_to_SignInFragment);
+            }
+        });
 
         saveUserButton.setOnClickListener(new View.OnClickListener() {
             @Override

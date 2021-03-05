@@ -17,8 +17,12 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.adiandnoy.RatEat.R;
@@ -35,6 +39,7 @@ import static android.app.Activity.RESULT_OK;
 
 public class AddDishFragment extends Fragment {
 
+    private FirebaseUser currentUser;
     TextInputEditText name;
     TextInputEditText description;
     TextInputEditText resturant;
@@ -44,21 +49,42 @@ public class AddDishFragment extends Fragment {
     RatingBar dishStars;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_add_dish, container, false);
-        Button addDish = view.findViewById(R.id.save_dish_buttom);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        setHasOptionsMenu(true);
+        final NavController navController = Navigation.findNavController(view);
+        currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        if(currentUser != null) {
+            showData();
+        }
+        else{
+            Toast.makeText(getContext(), "Not allowed! sign in first", Toast.LENGTH_LONG).show();
+//            navController.navigate(R.id.SignInFragment);
+        }
+    }
 
+    private void showData() {
+        Button addDish = getView().findViewById(R.id.save_dish_buttom);
+        ImageButton backBtn = getView().findViewById(R.id.backBtnFromAdd);
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         String uid = currentUser.getUid();
 
-        name = view.findViewById(R.id.input_dish_name);
-        description = view.findViewById(R.id.input_dish_description);
-        resturant = view.findViewById(R.id.input_resturant_name);
-        ingredient = view.findViewById(R.id.input_dish_ingredient);
-        editImage = view.findViewById(R.id.editImageAddDishFragment);
-        dishImage = view.findViewById(R.id.import_image_add_dish_fragment);
-        dishStars = view.findViewById(R.id.dishRatingBar);
+        name = getView().findViewById(R.id.input_dish_name);
+        name.requestFocus();
+        description = getView().findViewById(R.id.input_dish_description);
+        resturant = getView().findViewById(R.id.input_resturant_name);
+        ingredient = getView().findViewById(R.id.input_dish_ingredient);
+        editImage = getView().findViewById(R.id.editImageAddDishFragment);
+        dishImage = getView().findViewById(R.id.import_image_add_dish_fragment);
+        dishStars = getView().findViewById(R.id.dishRatingBar);
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final NavController navController = Navigation.findNavController(getView());
+                navController.navigate(R.id.action_addDishFragment_to_DishesListFragment);
+            }
+        });
 
         editImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,6 +132,12 @@ public class AddDishFragment extends Fragment {
                 });
             }
         });
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_add_dish, container, false);
         return view;
     }
 //    static final int REQUEST_IMAGE_CAPTURE = 1;
