@@ -75,7 +75,7 @@ public class RegisterFragment extends Fragment {
         userImage = view.findViewById(R.id.input_profile_img);
         editImage = view.findViewById(R.id.editImageRegisterFragment);
 
-        userImage.setImageResource(R.drawable.profile);
+        userImage.setImageResource(R.drawable.ic_profile);
 
         mAuth = FirebaseAuth.getInstance();
         name.requestFocus();

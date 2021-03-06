@@ -15,6 +15,7 @@
         android:layout_height="162dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp"
+        android:scaleType="fitCenter"
         android:src="@android:drawable/ic_menu_gallery"
         app:layout_constraintBottom_toTopOf="@+id/input_dish_name"
         app:layout_constraintEnd_toEndOf="parent"
@@ -105,10 +106,10 @@
 
     <ImageButton
         android:id="@+id/editImageAddDishFragment"
-        android:layout_width="72dp"
-        android:layout_height="59dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="20dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
         android:background="#00FFFFFF"
         android:scaleType="fitXY"
         android:src="@android:drawable/ic_menu_edit"
@@ -133,9 +134,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:src="@drawable/ic_back"
+        app:srcCompat="@drawable/ic_back"
         app:layout_constraintEnd_toStartOf="@+id/input_profile_img"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="TODO" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
