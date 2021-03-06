@@ -35,25 +35,31 @@
         android:textSize="36sp"
         android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/profilePic"
-        android:layout_width="154dp"
-        android:layout_height="110dp"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/profilePicCard"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
         android:layout_marginStart="105dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="105dp"
-        android:background="#FFFFFF"
-        android:clickable="true"
-        android:foregroundGravity="center_vertical"
-        android:maxWidth="70dp"
-        android:src="@drawable/animation_person"
+        android:elevation="10dp"
+        app:cardCornerRadius="64dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ProfileHeading" />
+        app:layout_constraintTop_toBottomOf="@+id/ProfileHeading">
+
+        <ImageView
+            android:id="@+id/profilePic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:clickable="true"
+            android:foregroundGravity="center_vertical"
+            android:src="@drawable/animation_person" />
+    </androidx.cardview.widget.CardView>
 
     <Button
         android:id="@+id/my_dtls_btn"
@@ -66,7 +72,7 @@
         android:text="My Details"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profilePic" />
+        app:layout_constraintTop_toBottomOf="@+id/profilePicCard" />
 
     <!--    <Button-->
     <!--        android:id="@+id/button"-->
