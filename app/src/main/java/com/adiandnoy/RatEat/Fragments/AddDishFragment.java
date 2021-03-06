@@ -65,7 +65,6 @@ public class AddDishFragment extends Fragment {
     private void showData() {
         Button addDish = getView().findViewById(R.id.save_dish_buttom);
         ImageButton backBtn = getView().findViewById(R.id.backBtnFromAdd);
-//        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         String uid = currentUser.getUid();
 
         name = getView().findViewById(R.id.input_dish_name);
