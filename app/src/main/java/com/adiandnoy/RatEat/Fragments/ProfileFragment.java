@@ -22,6 +22,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.adiandnoy.RatEat.DishListViewModel;
 import com.adiandnoy.RatEat.R;
@@ -44,12 +45,18 @@ public class ProfileFragment extends Fragment {
     DishListViewModel viewModel;
     ImageView imageViewProfile;
     NestedScrollView nestedScrollView;
+    SwipeRefreshLayout refreshLayout;
 
     FirebaseUser currentUser;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        final NavController navController = Navigation.findNavController(view);
+
+        loadProfileData();
+    }
+
+    public void loadProfileData() {
+        final NavController navController = Navigation.findNavController(getView());
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
         if(currentUser != null) {
             showData();
@@ -58,6 +65,7 @@ public class ProfileFragment extends Fragment {
             Toast.makeText(getContext(), "Not allowed! sign in first", Toast.LENGTH_LONG).show();
             navController.navigate(R.id.tabBarFragment);
         }
+        refreshLayout.setRefreshing(false);
     }
 
     public void showData() {
@@ -116,6 +124,14 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
+
+        refreshLayout = view.findViewById(R.id.profile_swipe);
+
+        refreshLayout.setOnRefreshListener(()->{
+            refreshLayout.setRefreshing(true);
+            loadProfileData();
+        });
+
         return view;
     }
 

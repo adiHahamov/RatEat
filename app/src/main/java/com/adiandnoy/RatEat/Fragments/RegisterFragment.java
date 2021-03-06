@@ -151,6 +151,9 @@ public class RegisterFragment extends Fragment {
 
         return view;
     }
+
+
+
     private void displayFailedError() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Operation Failed");
