@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
@@ -42,6 +43,7 @@ public class ProfileFragment extends Fragment {
     myDishPicAdapter dishAdapter;
     DishListViewModel viewModel;
     ImageView imageViewProfile;
+    NestedScrollView nestedScrollView;
 
     FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -64,7 +66,10 @@ public class ProfileFragment extends Fragment {
         dtls_btn = getView().findViewById(R.id.my_dtls_btn);
         dishesList = getView().findViewById(R.id.rv_my_dish);
         imageViewProfile = getView().findViewById(R.id.profilePic);
-        dishesList.setHasFixedSize(true);
+        nestedScrollView = getView().findViewById(R.id.nestedScroll);
+
+        dishesList.setHasFixedSize(false);
+        nestedScrollView.setNestedScrollingEnabled(false);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         dishesList.setLayoutManager(layoutManager);
