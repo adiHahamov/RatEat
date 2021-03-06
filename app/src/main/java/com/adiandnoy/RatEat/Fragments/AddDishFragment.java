@@ -96,6 +96,8 @@ public class AddDishFragment extends Fragment {
             @Override
             public void onClick(View view) {
 //                editImage();
+                if (!validateInput()) return;
+
                 Dish dish = new Dish();
                 dish.setId(UUID.randomUUID().toString());
                 dish.setDishName(name.getText().toString());
@@ -131,6 +133,32 @@ public class AddDishFragment extends Fragment {
                 });
             }
         });
+    }
+
+    private boolean validateInput(){
+        boolean valid = true;
+
+        if(name.getText().toString().isEmpty()){
+            valid = false;
+            name.setError("Enter a name");
+        }
+
+        if(description.getText().toString().isEmpty()){
+            valid = false;
+            description.setError("Enter a description");
+        }
+
+        if(resturant.getText().toString().isEmpty()){
+            valid = false;
+            resturant.setError("Enter a restaurant");
+        }
+
+        if(ingredient.getText().toString().isEmpty()){
+            valid = false;
+            ingredient.setError("Enter the ingredients");
+        }
+
+        return valid;
     }
 
     @Override
