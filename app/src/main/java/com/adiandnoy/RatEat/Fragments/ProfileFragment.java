@@ -71,6 +71,13 @@ public class ProfileFragment extends Fragment {
         dishesList.setHasFixedSize(false);
         nestedScrollView.setNestedScrollingEnabled(false);
 
+        dtls_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         dishesList.setLayoutManager(layoutManager);
 

@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/myDetailsTitle"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginStart="32dp"
@@ -15,51 +15,136 @@
         android:layout_marginEnd="32dp"
         android:gravity="center_horizontal"
         android:text="My Details"
+        android:textColor="#E49E37"
         android:textSize="36sp"
+        android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_marginStart="105dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="105dp"
-        android:cropToPadding="true"
-        android:rotation="0"
-        android:rotationY="0"
-        android:src="@drawable/animation_person"
+        android:id="@+id/updateProfileImg"
+        android:layout_width="279dp"
+        android:layout_height="246dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/updateFirstName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/myDetailsTitle"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ic_profile" />
 
-    <ImageButton
-        android:id="@+id/button"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:src="@drawable/ic_edit"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="@id/imageView2"
-        app:layout_constraintStart_toStartOf="@id/imageView2"
-        tools:src="@drawable/edit" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/updateMail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:hint="Email"
+            android:singleLine="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/updateFirstName"
+            app:layout_constraintHorizontal_bias="0.958"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/updateLastName" />
 
-<!--    <LinearLayout-->
-<!--        android:layout_width="414dp"-->
-<!--        android:layout_height="389dp"-->
-<!--        android:orientation="vertical"-->
-<!--        tools:layout_editor_absoluteX="-3dp"-->
-<!--        tools:layout_editor_absoluteY="342dp">-->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/updateLastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:hint="Last name"
+            android:singleLine="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/updatePassword"
+            app:layout_constraintHorizontal_bias="0.963"
+            app:layout_constraintStart_toEndOf="@+id/updateFirstName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/updateFirstName" />
 
-<!--        <EditText-->
-<!--            android:id="@+id/EditTextName"-->
-<!--            android:layout_width="fill_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:hint="First Name"-->
-<!--            android:inputType="textPersonName"></EditText>-->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/updatePassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:focusable="auto"
+            android:focusableInTouchMode="true"
+            android:hint="Password"
+            android:singleLine="true"
+            android:inputType="textPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/updateLastName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/updateMail" />
 
-<!--    </LinearLayout>-->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/updateFirstName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:hint="First name"
+            android:imeOptions="flagNoEnterAction"
+            android:selectAllOnFocus="false"
+            android:singleLine="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/updateLastName"
+            app:layout_constraintHorizontal_bias="0.944"
+            app:layout_constraintStart_toEndOf="@+id/updateMail"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/updateProfileImg" />
+
+        <Button
+            android:id="@+id/updateUserBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="161dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="162dp"
+            android:text="Save"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/updatePassword"
+            app:layout_constraintVertical_bias="0.223" />
+
+        <ImageButton
+            android:id="@+id/editImageMyDtlsFragment"
+            android:layout_width="72dp"
+            android:layout_height="59dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="20dp"
+            android:background="#00FFFFFF"
+            android:scaleType="fitXY"
+            android:src="@android:drawable/ic_menu_edit"
+            app:layout_constraintBottom_toBottomOf="@+id/updateProfileImg"
+            app:layout_constraintEnd_toEndOf="@+id/updateProfileImg" />
+
+        <ImageButton
+            android:id="@+id/backBtnFromMyDtls"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_back"
+            app:layout_constraintEnd_toStartOf="@+id/updateProfileImg"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

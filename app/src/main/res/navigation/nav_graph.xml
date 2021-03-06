@@ -37,11 +37,11 @@
         android:label="dish info"
         tools:layout="@layout/fragment_profile" >
         <action
-            android:id="@+id/action_profileFragment_to_myDetailsFragment"
-            app:destination="@id/myDetailsFragment" />
-        <action
             android:id="@+id/action_profileFragment_to_updateDishFragment"
             app:destination="@id/updateDishFragment" />
+        <action
+            android:id="@+id/action_ProfileFragment_to_myDetailsFragment"
+            app:destination="@id/myDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/addStudentFragment"
@@ -52,11 +52,6 @@
             android:id="@+id/action_addDishFragment_to_DishesListFragment"
             app:destination="@id/studentListFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/myDetailsFragment"
-        android:name="com.adiandnoy.RatEat.Fragments.MyDetailsFragment"
-        android:label="fragment_my_details"
-        tools:layout="@layout/fragment_my_details" />
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.adiandnoy.RatEat.Fragments.RegisterFragment"
@@ -124,5 +119,31 @@
         <argument
             android:name="stars"
             app:argType="float" />
+    </fragment>
+    <fragment
+        android:id="@+id/myDetailsFragment"
+        android:name="com.adiandnoy.RatEat.Fragments.MyDetailsFragment"
+        android:label="fragment_my_details"
+        tools:layout="@layout/fragment_my_details" >
+        <argument
+            android:name="firstName"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="lastName"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="mail"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="password"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="profileImgUrl"
+            app:argType="string"
+            app:nullable="true" />
     </fragment>
 </navigation>
