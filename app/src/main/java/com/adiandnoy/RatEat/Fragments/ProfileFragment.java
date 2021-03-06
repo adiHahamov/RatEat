@@ -45,7 +45,7 @@ public class ProfileFragment extends Fragment {
     ImageView imageViewProfile;
     NestedScrollView nestedScrollView;
 
-    FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+    FirebaseUser currentUser;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {

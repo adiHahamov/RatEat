@@ -82,6 +82,14 @@ public class Model {
         modelFirebase.addDish(dish,listener);
     };
 
+//    public interface GetUserListener{
+//        void onComplete(User user);
+//    }
+//
+//    public void getUser(final String uId,GetUserListener listener){
+//        modelFirebase.getUser(uId,listener);
+//    };
+
     interface DeleteDisheListener extends AddDisheListener{}
     interface UpdateDishListener extends AddDisheListener{}
 

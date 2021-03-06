@@ -77,6 +77,25 @@ public class ModelFirebase {
     public void getAllUsers(Model.GetAllUsersListener listener) {
 
     }
+//    public void getUser(String uId, Model.GetUserListener listener) {
+//        FirebaseFirestore db = FirebaseFirestore.getInstance();
+//        db.collection("users").document(uId).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+//            User user = null;
+//            @Override
+//            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+//                User user = null;
+//                if (task.isSuccessful()) {
+//                    DocumentSnapshot doc = task.getResult();
+//                    if (doc != null) {
+//                        user = new User();
+//                        user = task.getResult().toObject(User.class);
+////                        dish = task.getResult().toObject(Dish.class);
+//                    }
+//                }
+//                listener.onComplete(user);
+//            }
+//        });
+//    };
 
     public void addUser(User user, Model.AddUserListener listener) {
         // Access a Cloud Firestore instance from your Activity
