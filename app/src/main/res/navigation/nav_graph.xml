@@ -124,9 +124,5 @@
         <argument
             android:name="stars"
             app:argType="float" />
-        <argument
-            android:name="uId"
-            app:argType="string"
-            app:nullable="true" />
     </fragment>
 </navigation>

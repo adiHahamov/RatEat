@@ -52,7 +52,7 @@ public class myDishPicHolder extends RecyclerView.ViewHolder {
                 }
                 float starsNumberf = (float)starsNumber;
                 ProfileFragmentDirections.ActionProfileFragmentToUpdateDishFragment dishUpdAction =
-                        ProfileFragmentDirections.actionProfileFragmentToUpdateDishFragment(dish.getImageUrl(),dish.getDishName(),dish.getDishDescription(),dish.getResturantName(),dish.getIngredients(),starsNumberf,dish.getId());
+                        ProfileFragmentDirections.actionProfileFragmentToUpdateDishFragment(dish.getImageUrl(),dish.getDishName(),dish.getDishDescription(),dish.getResturantName(),dish.getIngredients(),starsNumberf);
                 navController.navigate(dishUpdAction);
             }
         });
