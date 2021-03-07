@@ -44,6 +44,7 @@ public class UpdateDishFragment extends Fragment {
     TextInputEditText resturantName;
     TextInputEditText dishIngredients;
     ImageButton editImage;
+    ImageButton backBtn;
     ImageView dishImage;
     RatingBar dishStars;
 
@@ -61,6 +62,7 @@ public class UpdateDishFragment extends Fragment {
         editImage = view.findViewById(R.id.editImageUpdateDishFragment);
         dishImage = view.findViewById(R.id.editImage);
         dishStars = view.findViewById(R.id.editDishRatingBar);
+        backBtn = view.findViewById(R.id.backBtnFromUpd);
         dishName.requestFocus();
 
         // Gets the parameters
@@ -78,6 +80,13 @@ public class UpdateDishFragment extends Fragment {
         dishIngredients.setText(dishIngredientsParam);
         resturantName.setText(resturantNameParam);
         dishStars.setRating(ratingBarParam);
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(getView()).popBackStack();
+            }
+        });
 
         editImage.setOnClickListener(new View.OnClickListener() {
             @Override

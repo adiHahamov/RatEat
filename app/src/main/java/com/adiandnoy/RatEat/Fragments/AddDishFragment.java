@@ -64,7 +64,7 @@ public class AddDishFragment extends Fragment {
 
     private void showData() {
         Button addDish = getView().findViewById(R.id.save_dish_buttom);
-        ImageButton backBtn = getView().findViewById(R.id.backBtnFromAdd);
+//        ImageButton backBtn = getView().findViewById(R.id.backBtnFromAdd);
 //        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         String uid = currentUser.getUid();
 
@@ -77,13 +77,13 @@ public class AddDishFragment extends Fragment {
         dishImage = getView().findViewById(R.id.import_image_add_dish_fragment);
         dishStars = getView().findViewById(R.id.dishRatingBar);
 
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                final NavController navController = Navigation.findNavController(getView());
-                navController.navigate(R.id.action_addDishFragment_to_DishesListFragment);
-            }
-        });
+//        backBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                final NavController navController = Navigation.findNavController(getView());
+//                navController.navigate(R.id.action_addDishFragment_to_DishesListFragment);
+//            }
+//        });
 
         editImage.setOnClickListener(new View.OnClickListener() {
             @Override

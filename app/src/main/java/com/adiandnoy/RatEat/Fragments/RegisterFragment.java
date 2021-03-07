@@ -89,8 +89,7 @@ public class RegisterFragment extends Fragment {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final NavController navController = Navigation.findNavController(getView());
-                navController.navigate(R.id.action_registerFragment_to_SignInFragment);
+                Navigation.findNavController(getView()).popBackStack();
             }
         });
 
