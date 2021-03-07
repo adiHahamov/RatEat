@@ -124,6 +124,8 @@ public class AddDishFragment extends Fragment {
                             Model.instance.addDish(dish, new Model.AddDisheListener() {
                                 @Override
                                 public void onComplete() {
+                                    final NavController navController = Navigation.findNavController(getView());
+                                    navController.navigate(R.id.studentListFragment);
 //                                    Navigation.findNavController(addDish)
 //                                    Navigation.findNavController(view).navigate(R.id.action_registerFragment_to_studentListFragment);
                                 }

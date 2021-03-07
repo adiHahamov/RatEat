@@ -3,6 +3,7 @@ package com.adiandnoy.RatEat.adapters;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
@@ -20,6 +21,7 @@ public class myDishPicHolder extends RecyclerView.ViewHolder {
     ImageView dishImage = itemView.findViewById(R.id.image_my_list_row);
     ImageButton edit =  itemView.findViewById(R.id.editBtn);
     ImageButton delete =  itemView.findViewById(R.id.delBtn);
+    TextView dishName = itemView.findViewById(R.id.dishNameProfileFragment);
 
     int position;
 
@@ -38,6 +40,10 @@ public class myDishPicHolder extends RecyclerView.ViewHolder {
     public void bindData(Dish dish, int position) {
         if (dish.getImageUrl() != null){
             Picasso.get().load(dish.getImageUrl()).placeholder(R.drawable.dish).into(dishImage);
+        }
+
+        if (dish.getDishName() != null){
+            dishName.setText(dish.getDishName());
         }
 
 
@@ -68,7 +74,6 @@ public class myDishPicHolder extends RecyclerView.ViewHolder {
                         Model.instance.refreshAllDishes(new Model.Listener() {
                             @Override
                             public void onComplete(Object data) {
-
                             }
                         });
                     }
