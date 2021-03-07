@@ -3,11 +3,13 @@ package com.adiandnoy.RatEat.Fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 
@@ -23,6 +25,7 @@ public class DishDetailsFragment extends Fragment {
     TextInputEditText ingredient;
     ImageView dishImage;
     RatingBar dishStars;
+    ImageButton backBtn;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -37,6 +40,14 @@ public class DishDetailsFragment extends Fragment {
         ingredient =  view.findViewById(R.id.dish_ingredient_details_fragment);
         dishImage = view.findViewById(R.id.dish_img_details_fragment);
         dishStars = view.findViewById(R.id.ratingBar_details_fragment);
+        backBtn = view.findViewById(R.id.backBtnFromDishDtls);
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(getView()).popBackStack();
+            }
+        });
 
         // Gets the parameters
         String imgUrlParam = DishDetailsFragmentArgs.fromBundle(getArguments()).getDishImgUrl();
