@@ -27,8 +27,8 @@
 
     <ImageView
         android:id="@+id/input_profile_img"
-        android:layout_width="279dp"
-        android:layout_height="246dp"
+        android:layout_width="231dp"
+        android:layout_height="167dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/input_first_name"

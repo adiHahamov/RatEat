@@ -30,8 +30,10 @@ import com.adiandnoy.RatEat.adapters.DishAdapter;
 import com.adiandnoy.RatEat.adapters.myDishPicAdapter;
 import com.adiandnoy.RatEat.model.Dish;
 import com.adiandnoy.RatEat.model.Model;
+import com.adiandnoy.RatEat.model.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,10 +60,9 @@ public class ProfileFragment extends Fragment {
     public void loadProfileData() {
         final NavController navController = Navigation.findNavController(getView());
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        if(currentUser != null) {
+        if (currentUser != null) {
             showData();
-        }
-        else {
+        } else {
             Toast.makeText(getContext(), "Not allowed! sign in first", Toast.LENGTH_LONG).show();
             navController.navigate(R.id.tabBarFragment);
         }
@@ -117,6 +118,21 @@ public class ProfileFragment extends Fragment {
 //                dishAdapter.data =viewModel.getList();
             }
         });
+
+        viewModel.getUserList().observe(getViewLifecycleOwner(), new Observer<List<User>>() {
+            @Override
+            public void onChanged(List<User> users) {
+                User DBuser = new User();
+
+                for (User user : viewModel.getUserList().getValue()) {
+                    if (user.getId().equals(uid)) {
+                        DBuser = user;
+
+                        Picasso.get().load(DBuser.getImageUrl()).into(imageViewProfile);
+                    }
+                }
+            }
+        });
     }
 
     @Override
@@ -127,7 +143,7 @@ public class ProfileFragment extends Fragment {
 
         refreshLayout = view.findViewById(R.id.profile_swipe);
 
-        refreshLayout.setOnRefreshListener(()->{
+        refreshLayout.setOnRefreshListener(() -> {
             refreshLayout.setRefreshing(true);
             loadProfileData();
         });
@@ -135,7 +151,7 @@ public class ProfileFragment extends Fragment {
         return view;
     }
 
-    void reloadData(String uid){
+    void reloadData(String uid) {
 //        pr.setVisibility(View.VISIBLE);
         Model.instance.refreshAllDishes(new Model.Listener() {
             @Override
@@ -144,10 +160,10 @@ public class ProfileFragment extends Fragment {
                 List<Dish> myDish = new ArrayList<Dish>();
 
                 for (Dish dishP : viewModel.getList().getValue()) {
-                if (dishP.getUserID().equals(uid)&& dishP.getDeleted().equals(false)) {
-                    myDish.add(dishP);
+                    if (dishP.getUserID().equals(uid) && dishP.getDeleted().equals(false)) {
+                        myDish.add(dishP);
+                    }
                 }
-            }
 
                 dishAdapter.data = myDish;
 //                dishAdapter.data = viewModel.getList();

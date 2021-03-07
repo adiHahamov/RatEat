@@ -74,8 +74,27 @@ public class ModelFirebase {
                 });
     }
 
-    public void getAllUsers(Model.GetAllUsersListener listener) {
-
+    public void getAllUsers(long lastUpdateDate,Model.GetAllUsersListener listener) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        List<User> users = new ArrayList<User>();
+        Timestamp ts = new Timestamp(lastUpdateDate,0);
+        db.collection("users").whereGreaterThanOrEqualTo("lastUpdated",ts)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                User user = new User();
+                                user.fromMap(document.getData());
+//                                Dish dish = document.toObject(Dish.class);
+                                users.add(user);
+                            }
+//                            return dishList;
+                        }
+                        listener.onComplete(users);
+                    }
+                });
     }
 //    public void getUser(String uId, Model.GetUserListener listener) {
 //        FirebaseFirestore db = FirebaseFirestore.getInstance();

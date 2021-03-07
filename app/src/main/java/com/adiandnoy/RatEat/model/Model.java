@@ -27,6 +27,7 @@ public class Model {
     }
 
     LiveData<List<Dish>> dishList;
+    LiveData<List<User>> userList;
 
     public LiveData<List<Dish>> getAllDishes() {
         if(dishList == null) {
@@ -34,6 +35,14 @@ public class Model {
             refreshAllDishes(null);
         }
         return dishList;
+    }
+
+    public LiveData<List<User>> getAllUsers() {
+        if(userList == null) {
+            userList = modelSql.getAllUsers();
+            refreshAllUsers(null);
+        }
+        return userList;
     }
 
     public void refreshAllDishes(final Listener listener){
@@ -57,13 +66,6 @@ public class Model {
                 }
             }
             });
-//        modelFirebase.getAllDishes(new GetAllDishesListener() {
-//            @Override
-//            public void onComplete(List<Dish> data) {
-//                dishList.setValue(data);
-//                listener.onComplete(null);
-//            }
-//        });
     }
 
     public interface GetDisheListener{
@@ -82,14 +84,6 @@ public class Model {
         modelFirebase.addDish(dish,listener);
     };
 
-//    public interface GetUserListener{
-//        void onComplete(User user);
-//    }
-//
-//    public void getUser(final String uId,GetUserListener listener){
-//        modelFirebase.getUser(uId,listener);
-//    };
-
     interface DeleteDisheListener extends AddDisheListener{}
     interface UpdateDishListener extends AddDisheListener{}
 
@@ -106,8 +100,27 @@ public class Model {
         void onComplete(List<User> data);
     }
 
-    public void getAllUsers(GetAllUsersListener listener) {
-        modelFirebase.getAllUsers(listener);
+    public void refreshAllUsers(final Listener listener) {
+        final SharedPreferences sp = MyApplication.context.getSharedPreferences("TAG", Context.MODE_PRIVATE);
+        long lastUpdateDate = sp.getLong("lastUpdateDate", 0);
+
+        modelFirebase.getAllUsers(lastUpdateDate,new GetAllUsersListener() {
+            @Override
+            public void onComplete(List<User> data) {
+                long lastUpdated = 0;
+                for (User user: data) {
+                    modelSql.addUser(user, null);
+                    if(user.getLastUpdated() > lastUpdated) {
+                        lastUpdated = user.getLastUpdated();
+                    }
+                }
+
+                sp.edit().putLong("lastUpdateDate", lastUpdated).commit();
+                if(listener != null) {
+                    listener.onComplete(data);
+                }
+            }
+        });
     }
 
     public interface AddUserListener{

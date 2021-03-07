@@ -4,6 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.FieldValue;
+
+import java.util.HashMap;
+import java.util.Map;
+
 @Entity
 public class User {
     @PrimaryKey
@@ -14,6 +20,32 @@ public class User {
     private String mail;
     private String password;
     private String imageUrl;
+    private Long lastUpdated;
+
+    public Map<String,Object> toMap(){
+        HashMap<String,Object> result = new HashMap<>();
+        result.put("id",id);
+        result.put("name",name);
+        result.put("lastName",lastName);
+        result.put("mail",mail);
+        result.put("password",password);
+        result.put("imageUrl",imageUrl);
+        result.put("lastUpdated", FieldValue.serverTimestamp());
+        return result;
+    }
+
+    public void fromMap(Map<String,Object> map){
+//        result.put("id",id);
+        id = (String) map.get("id");
+        name = (String) map.get("name");
+        lastName = (String) map.get("lastName");
+        mail = (String) map.get("mail");
+        password = (String) map.get("password");
+        imageUrl = (String) map.get("imageUrl");
+        Timestamp timestamp = (Timestamp)map.get("lastUpdated");
+        lastUpdated = timestamp.getSeconds();
+    }
+
 
     @NonNull
     public String getId() {
@@ -62,5 +94,13 @@ public class User {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public Long getLastUpdated() {
+        return lastUpdated;
+    }
+
+    public void setLastUpdated(Long lastUpdated) {
+        this.lastUpdated = lastUpdated;
     }
 }

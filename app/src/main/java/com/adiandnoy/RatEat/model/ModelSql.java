@@ -47,23 +47,24 @@ public class ModelSql {
         void onComplete(List<User> data);
     }
 
-    public void getAllUsers(Model.GetAllUsersListener listener) {
-        class MyAsyncTask extends AsyncTask {
-            List<User> data;
-            @Override
-            protected Object doInBackground(Object[] objects) {
-                List<User> data = AppLocalDB.db.userDao().getAllUsers();
-                return null;
-            }
-
-            @Override
-            protected void onPostExecute(Object o) {
-                super.onPostExecute(o);
-                listener.onComplete(data);
-            }
-        }
-        MyAsyncTask task = new MyAsyncTask();
-        task.execute();
+    public LiveData<List<User>> getAllUsers() {
+        return AppLocalDB.db.userDao().getAllUsers();
+//        class MyAsyncTask extends AsyncTask {
+//            List<User> data;
+//            @Override
+//            protected Object doInBackground(Object[] objects) {
+//                List<User> data = AppLocalDB.db.userDao().getAllUsers();
+//                return null;
+//            }
+//
+//            @Override
+//            protected void onPostExecute(Object o) {
+//                super.onPostExecute(o);
+//                listener.onComplete(data);
+//            }
+//        }
+//        MyAsyncTask task = new MyAsyncTask();
+//        task.execute();
     }
 
     public interface AddUserListener{

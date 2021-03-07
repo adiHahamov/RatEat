@@ -3,6 +3,7 @@ package com.adiandnoy.RatEat;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +24,7 @@ public class AppMainActivity extends AppCompatActivity {
 
     NavController navController;
     private static final int RC_SIGN_IN = 123;
+    private FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,11 @@ public class AppMainActivity extends AppCompatActivity {
 
         BottomNavigationView bottomNavigation = (BottomNavigationView)findViewById(R.id.button_nav);
         navController = Navigation.findNavController(this, R.id.nav_fragment);
+
+        //If the user is login navigate to all dishes view
+        if(currentUser != null) {
+            navController.navigate(R.id.studentListFragment);
+        }
 
         NavigationUI.setupWithNavController(bottomNavigation, navController);
 
