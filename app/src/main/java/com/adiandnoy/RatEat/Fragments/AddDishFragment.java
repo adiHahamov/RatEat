@@ -11,6 +11,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -124,6 +126,8 @@ public class AddDishFragment extends Fragment {
                             Model.instance.addDish(dish, new Model.AddDisheListener() {
                                 @Override
                                 public void onComplete() {
+                                    final NavController navController = Navigation.findNavController(getView());
+                                    navController.navigate(R.id.studentListFragment);
 //                                    Navigation.findNavController(addDish)
 //                                    Navigation.findNavController(view).navigate(R.id.action_registerFragment_to_studentListFragment);
                                 }
@@ -247,6 +251,11 @@ public class AddDishFragment extends Fragment {
                     break;
             }
         }
+    }
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        menu.clear();
+        inflater.inflate(R.menu.top_menu,menu);
     }
 
 //    @Override

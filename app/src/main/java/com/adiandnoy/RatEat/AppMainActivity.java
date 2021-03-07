@@ -99,9 +99,21 @@ public class AppMainActivity extends AppCompatActivity {
 //                navController.navigate(R.id.goBackToSignIn);
 //            }
 //        }
+        if(item.getItemId() == R.id.signOutBotton) {
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            if(user == null){
+                Toast.makeText(this, "Sign in first", Toast.LENGTH_LONG).show();
+            }
+            else{
+                FirebaseAuth.getInstance().signOut();
+                Toast.makeText(this, "User signed out", Toast.LENGTH_LONG).show();
+                navController.navigate(R.id.tabBarFragment);
+            }
+        }
 
         return NavigationUI.onNavDestinationSelected(item, navController);
     }
+
 
 
 }
