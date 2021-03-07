@@ -2,10 +2,14 @@ package com.adiandnoy.RatEat.Fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
@@ -31,7 +35,7 @@ public class MyDetailsFragment extends Fragment {
         // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.fragment_my_details, container, false);
-
+        setHasOptionsMenu(true);
         name =  view.findViewById(R.id.dispFirstName);
         lastName =  view.findViewById(R.id.dispLastName);
         mail =  view.findViewById(R.id.dispMail);
@@ -62,5 +66,11 @@ public class MyDetailsFragment extends Fragment {
         });
 
         return view;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+//        menu.clear();
+        inflater.inflate(R.menu.top_menu,menu);
     }
 }

@@ -1,24 +1,18 @@
 package com.adiandnoy.RatEat;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
-import com.adiandnoy.RatEat.Fragments.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
-import java.util.Arrays;
-import java.util.List;
 
 public class AppMainActivity extends AppCompatActivity {
 
@@ -99,7 +93,7 @@ public class AppMainActivity extends AppCompatActivity {
 //                navController.navigate(R.id.goBackToSignIn);
 //            }
 //        }
-        if(item.getItemId() == R.id.signOutBotton) {
+        if(item.getItemId() == R.id.LogOutButton) {
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             if(user == null){
                 Toast.makeText(this, "Sign in first", Toast.LENGTH_LONG).show();

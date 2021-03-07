@@ -40,6 +40,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.Executor;
@@ -75,7 +77,7 @@ public class RegisterFragment extends Fragment {
         userImage = view.findViewById(R.id.input_profile_img);
         editImage = view.findViewById(R.id.editImageRegisterFragment);
 
-        userImage.setImageResource(R.drawable.ic_profile);
+//        userImage.setImageResource(R.drawable.ic_profile);
 
         mAuth = FirebaseAuth.getInstance();
         name.requestFocus();
@@ -103,7 +105,8 @@ public class RegisterFragment extends Fragment {
                 User user = new User();
 
                 //Save the image
-                BitmapDrawable drawable = (BitmapDrawable)userImage.getDrawable();
+//                userImage.setImageResource(R.drawable.ic_profile);
+                BitmapDrawable drawable = (BitmapDrawable) userImage.getDrawable();
                 Bitmap bitmap = drawable.getBitmap();
 
                 Model.instance.uploadImage(bitmap, UUID.randomUUID().toString(), new Model.uploadImageListener() {
@@ -120,8 +123,6 @@ public class RegisterFragment extends Fragment {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if(task.isSuccessful()) {
-                                        Log.d("onComplete","done");
-//                                        progressBar.setVisibility(View.INVISIBLE);
                                         FirebaseUser userAuth = mAuth.getCurrentUser();
                                         user.setId(userAuth.getUid());
                                         user.setName(name.getText().toString());
@@ -132,6 +133,8 @@ public class RegisterFragment extends Fragment {
                                         Model.instance.addUser(user, new Model.AddUserListener() {
                                             @Override
                                             public void onComplete() {
+                                                final NavController navController = Navigation.findNavController(getView());
+                                                navController.navigate(R.id.studentListFragment);
                                             }
                                         });
                                         Toast.makeText(getActivity(), "User has been registered successfully!", Toast.LENGTH_LONG).show();
@@ -214,8 +217,9 @@ public class RegisterFragment extends Fragment {
                         startActivityForResult(takePicture, 0);
 
                     } else if (options[item].equals("Choose from Gallery")) {
-                        Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                        startActivityForResult(pickPhoto, 1);
+                        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                        intent.setType("image/*");
+                        startActivityForResult(Intent.createChooser(intent,"Choose from Gallery"), 1);
 
                     } else if (options[item].equals("Cancel")) {
                         dialog.dismiss();
@@ -238,19 +242,13 @@ public class RegisterFragment extends Fragment {
 
                     break;
                 case 1:
-                    if (resultCode == RESULT_OK && data != null) {
-                        Uri selectedImage = data.getData();
-                        String[] filePathColumn = {MediaStore.Images.Media.DATA};
-                        if (selectedImage != null) {
-                            Cursor cursor = getActivity().getContentResolver().query(selectedImage,
-                                    filePathColumn, null, null, null);
-                            if (cursor != null) {
-                                cursor.moveToFirst();
-                                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-                                String picturePath = cursor.getString(columnIndex);
-                                userImage.setImageBitmap(BitmapFactory.decodeFile(picturePath));
-                                cursor.close();
-                            }
+                    if (resultCode == RESULT_OK && requestCode == 1 && data!= null) {
+                        try {
+                            InputStream inputStream = getActivity().getContentResolver().openInputStream(data.getData());
+                            Bitmap bitmap  = BitmapFactory.decodeStream(inputStream);
+                            userImage.setImageBitmap(bitmap);
+                        }catch (FileNotFoundException e){
+                            e.printStackTrace();
                         }
 
                     }

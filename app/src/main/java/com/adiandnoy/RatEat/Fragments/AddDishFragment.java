@@ -34,6 +34,8 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.UUID;
 
 import static android.app.Activity.RESULT_CANCELED;
@@ -78,14 +80,6 @@ public class AddDishFragment extends Fragment {
         editImage = getView().findViewById(R.id.editImageAddDishFragment);
         dishImage = getView().findViewById(R.id.import_image_add_dish_fragment);
         dishStars = getView().findViewById(R.id.dishRatingBar);
-
-//        backBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                final NavController navController = Navigation.findNavController(getView());
-//                navController.navigate(R.id.action_addDishFragment_to_DishesListFragment);
-//            }
-//        });
 
         editImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -171,14 +165,6 @@ public class AddDishFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_add_dish, container, false);
         return view;
     }
-//    static final int REQUEST_IMAGE_CAPTURE = 1;
-//    private void editImage() {
-//        Intent takePictureIntent = new Intent(
-//                MediaStore.ACTION_IMAGE_CAPTURE);
-//        if (takePictureIntent.resolveActivity(getActivity().getPackageManager()) != null) {
-//            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-//        }
-//    }
 
     private void displayFailedError() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -209,8 +195,10 @@ public class AddDishFragment extends Fragment {
                     startActivityForResult(takePicture, 0);
 
                 } else if (options[item].equals("Choose from Gallery")) {
-                    Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                    startActivityForResult(pickPhoto, 1);
+//                    Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                    intent.setType("image/*");
+                    startActivityForResult(Intent.createChooser(intent,"Choose from Gallery"), 1);
 
                 } else if (options[item].equals("Cancel")) {
                     dialog.dismiss();
@@ -232,19 +220,13 @@ public class AddDishFragment extends Fragment {
 
                     break;
                 case 1:
-                    if (resultCode == RESULT_OK && data != null) {
-                        Uri selectedImage = data.getData();
-                        String[] filePathColumn = {MediaStore.Images.Media.DATA};
-                        if (selectedImage != null) {
-                            Cursor cursor = getActivity().getContentResolver().query(selectedImage,
-                                    filePathColumn, null, null, null);
-                            if (cursor != null) {
-                                cursor.moveToFirst();
-                                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-                                String picturePath = cursor.getString(columnIndex);
-                                dishImage.setImageBitmap(BitmapFactory.decodeFile(picturePath));
-                                cursor.close();
-                            }
+                    if (resultCode == RESULT_OK && requestCode == 1 && data!= null) {
+                        try {
+                            InputStream inputStream = getActivity().getContentResolver().openInputStream(data.getData());
+                            Bitmap bitmap  = BitmapFactory.decodeStream(inputStream);
+                            dishImage.setImageBitmap(bitmap);
+                        }catch (FileNotFoundException e){
+                                e.printStackTrace();
                         }
 
                     }
@@ -252,19 +234,5 @@ public class AddDishFragment extends Fragment {
             }
         }
     }
-    @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        menu.clear();
-        inflater.inflate(R.menu.top_menu,menu);
-    }
 
-//    @Override
-//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        if (requestCode == REQUEST_IMAGE_CAPTURE &&
-//                resultCode == RESULT_OK) {
-//            Bundle extras = data.getExtras();
-//            Bitmap imageBitmap = (Bitmap) extras.get("data");
-//            dishImage.setImageBitmap(imageBitmap);
-//        }
-//    }
 }
