@@ -78,7 +78,8 @@ public class ModelFirebase {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         List<User> users = new ArrayList<User>();
         Timestamp ts = new Timestamp(lastUpdateDate,0);
-        db.collection("users").whereGreaterThanOrEqualTo("lastUpdated",ts)
+        db.collection("users").
+                whereGreaterThanOrEqualTo("lastUpdated",ts)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -122,7 +123,7 @@ public class ModelFirebase {
 
 // Add a new document with a generated ID
         db.collection("users").document(user.getId())
-                .set(user)
+                .set(user.toMap())
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
