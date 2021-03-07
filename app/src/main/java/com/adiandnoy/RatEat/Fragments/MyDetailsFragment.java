@@ -9,12 +9,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.RatingBar;
 
 import com.adiandnoy.RatEat.R;
+import com.google.android.material.textfield.TextInputEditText;
+import com.squareup.picasso.Picasso;
 
 public class MyDetailsFragment extends Fragment {
 
     ImageButton backBtn;
+    TextInputEditText name;
+    TextInputEditText lastName;
+    TextInputEditText mail;
+    TextInputEditText password;
+    ImageView profileImg;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -22,6 +31,27 @@ public class MyDetailsFragment extends Fragment {
         // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.fragment_my_details, container, false);
+
+        name =  view.findViewById(R.id.dispFirstName);
+        lastName =  view.findViewById(R.id.dispLastName);
+        mail =  view.findViewById(R.id.dispMail);
+        password =  view.findViewById(R.id.dispPassword);
+        profileImg = view.findViewById(R.id.dispProfileImg);
+        backBtn = view.findViewById(R.id.backBtnFromDishDtls);
+
+        // Gets the parameters
+        String imgUrlParam = MyDetailsFragmentArgs.fromBundle(getArguments()).getProfileImgUrl();
+        String nameParam = MyDetailsFragmentArgs.fromBundle(getArguments()).getFirstName();
+        String lastNameParam = MyDetailsFragmentArgs.fromBundle(getArguments()).getLastName();
+        String mailParam = MyDetailsFragmentArgs.fromBundle(getArguments()).getMail();
+        String passwordParam =  MyDetailsFragmentArgs.fromBundle(getArguments()).getPassword();
+
+        Picasso.get().load(imgUrlParam).into(profileImg);
+        name.setText(nameParam);
+        lastName.setText(lastNameParam);
+        mail.setText(mailParam);
+        password.setText(passwordParam);
+
         backBtn = view.findViewById(R.id.backBtnFromMyDtls);
 
         backBtn.setOnClickListener(new View.OnClickListener() {

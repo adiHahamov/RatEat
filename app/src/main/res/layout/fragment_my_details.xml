@@ -23,12 +23,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/updateProfileImg"
+        android:id="@+id/dispProfileImg"
         android:layout_width="279dp"
         android:layout_height="246dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/updateFirstName"
+        app:layout_constraintBottom_toTopOf="@+id/dispFirstName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/myDetailsTitle"
@@ -36,7 +36,7 @@
         app:srcCompat="@drawable/ic_profile" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/updateMail"
+            android:id="@+id/dispMail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -47,13 +47,13 @@
             android:hint="Email"
             android:singleLine="true"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/updateFirstName"
+            app:layout_constraintEnd_toStartOf="@+id/dispFirstName"
             app:layout_constraintHorizontal_bias="0.958"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/updateLastName" />
+            app:layout_constraintTop_toBottomOf="@+id/dispLastName" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/updateLastName"
+            android:id="@+id/dispLastName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -64,14 +64,14 @@
             android:hint="Last name"
             android:singleLine="true"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/updatePassword"
+            app:layout_constraintEnd_toStartOf="@+id/dispPassword"
             app:layout_constraintHorizontal_bias="0.963"
-            app:layout_constraintStart_toEndOf="@+id/updateFirstName"
+            app:layout_constraintStart_toEndOf="@+id/dispFirstName"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/updateFirstName" />
+            app:layout_constraintTop_toBottomOf="@+id/dispFirstName" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/updatePassword"
+            android:id="@+id/dispPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -84,12 +84,12 @@
             android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/updateLastName"
+            app:layout_constraintStart_toEndOf="@+id/dispLastName"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/updateMail" />
+            app:layout_constraintTop_toBottomOf="@+id/dispMail" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/updateFirstName"
+            android:id="@+id/dispFirstName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -100,40 +100,13 @@
             android:selectAllOnFocus="false"
             android:singleLine="true"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/updateLastName"
+            app:layout_constraintEnd_toStartOf="@+id/dispLastName"
             app:layout_constraintHorizontal_bias="0.944"
-            app:layout_constraintStart_toEndOf="@+id/updateMail"
+            app:layout_constraintStart_toEndOf="@+id/dispMail"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/updateProfileImg" />
-
-        <Button
-            android:id="@+id/updateUserBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="161dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="162dp"
-            android:text="Save"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/updatePassword"
-            app:layout_constraintVertical_bias="0.223" />
+            app:layout_constraintTop_toBottomOf="@+id/dispProfileImg" />
 
     <ImageButton
-        android:id="@+id/editImageMyDtlsFragment"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="15dp"
-        android:background="#00FFFFFF"
-        android:scaleType="fitXY"
-        android:src="@android:drawable/ic_menu_edit"
-        app:layout_constraintBottom_toBottomOf="@+id/updateProfileImg"
-        app:layout_constraintEnd_toEndOf="@+id/updateProfileImg" />
-
-        <ImageButton
             android:id="@+id/backBtnFromMyDtls"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
@@ -141,7 +114,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:src="@drawable/ic_back"
-            app:layout_constraintEnd_toStartOf="@+id/updateProfileImg"
+            app:layout_constraintEnd_toStartOf="@+id/dispProfileImg"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

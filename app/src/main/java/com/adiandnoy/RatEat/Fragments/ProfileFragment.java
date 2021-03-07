@@ -47,6 +47,7 @@ public class ProfileFragment extends Fragment {
     DishListViewModel viewModel;
     ImageView imageViewProfile;
     NestedScrollView nestedScrollView;
+    User userDtls;
     SwipeRefreshLayout refreshLayout;
 
     FirebaseUser currentUser;
@@ -84,6 +85,18 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
+                final NavController navController = Navigation.findNavController(view);
+
+                for(User user: viewModel.getUserList().getValue()) {
+                    if (user.getId().equals(currentUser.getUid())) {
+                        userDtls = user;
+                        break;
+                    }
+                }
+
+                ProfileFragmentDirections.ActionProfileFragmentToMyDetailsFragment myDtlsAction =
+                        ProfileFragmentDirections.actionProfileFragmentToMyDetailsFragment(userDtls.getName(), userDtls.getLastName(), userDtls.getMail(), userDtls.getPassword(),userDtls.getImageUrl());
+                navController.navigate(myDtlsAction);
             }
         });
 
