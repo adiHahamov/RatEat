@@ -9,12 +9,15 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -37,20 +40,34 @@ public class DishesListFragment extends Fragment {
     DishListViewModel viewModel;
     DishAdapter dishAdapter;
     SwipeRefreshLayout sref;
+    FirebaseUser currentUser;
+//    SwipeRefreshLayout refreshLayout;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_dishes_list, container, false);
-//        RecyclerView rv = view.findViewById(R.id.studentlistfrag_list);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
+        loadDishesList();
+    }
+
+    public void loadDishesList() {
+        final NavController navController = Navigation.findNavController(getView());
+        currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (currentUser != null) {
+            showData();
+        } else {
+            Toast.makeText(getContext(), "Not allowed! sign in first", Toast.LENGTH_LONG).show();
+            navController.navigate(R.id.tabBarFragment);
+        }
+//        refreshLayout.setRefreshing(false);
+    }
+
+    public void showData() {
         viewModel = new ViewModelProvider(this).get(DishListViewModel.class);
-        pr =  view.findViewById(R.id.progressBar_dishe_list);
+        pr =  getView().findViewById(R.id.progressBar_dishe_list);
         pr.setVisibility(View.INVISIBLE);
 
         //RecyclerView
-        rv = view.findViewById(R.id.studentlistfrag_list);
+        rv = getView().findViewById(R.id.studentlistfrag_list);
         rv.hasFixedSize();
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
@@ -68,7 +85,7 @@ public class DishesListFragment extends Fragment {
             }
         });
 
-        sref = view.findViewById(R.id.DishList_swipe);
+        sref = getView().findViewById(R.id.DishList_swipe);
         sref.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -77,6 +94,13 @@ public class DishesListFragment extends Fragment {
 
             }
         });
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_dishes_list, container, false);
         return view;
     }
 
