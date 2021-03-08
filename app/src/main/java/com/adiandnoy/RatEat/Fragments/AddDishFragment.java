@@ -79,11 +79,13 @@ public class AddDishFragment extends Fragment {
         ingredient = getView().findViewById(R.id.input_dish_ingredient);
         editImage = getView().findViewById(R.id.editImageAddDishFragment);
         dishImage = getView().findViewById(R.id.import_image_add_dish_fragment);
+
         dishStars = getView().findViewById(R.id.dishRatingBar);
 
         editImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 editImage();
             }
         });
@@ -233,6 +235,8 @@ public class AddDishFragment extends Fragment {
                     break;
             }
         }
+
+        dishImage.setRotation(90);
     }
 
 }

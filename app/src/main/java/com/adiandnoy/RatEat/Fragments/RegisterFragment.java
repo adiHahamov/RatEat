@@ -256,5 +256,6 @@ public class RegisterFragment extends Fragment {
                     break;
             }
         }
+        userImage.setRotation(90);
     }
 }
