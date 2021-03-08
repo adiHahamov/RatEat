@@ -24,69 +24,62 @@
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/dish_ingredient_details_fragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_width="185dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
         android:editable="false"
         android:focusableInTouchMode="false"
         android:hint="Dish ingredients:"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/dish_name_details_fragment"
-        app:layout_constraintHorizontal_bias="0.958"
+        app:layout_constraintHorizontal_bias="0.94"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/resturant_name_details_fragment" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/resturant_name_details_fragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_width="185dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
         android:editable="false"
         android:focusableInTouchMode="false"
         android:hint="Resturant name:"
         android:singleLine="true"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/dish_description_details_fragment"
-        app:layout_constraintHorizontal_bias="0.963"
+        app:layout_constraintHorizontal_bias="0.94"
         app:layout_constraintStart_toEndOf="@+id/dish_name_details_fragment"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dish_name_details_fragment" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/dish_description_details_fragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_width="185dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
         android:editable="false"
         android:focusable="auto"
         android:focusableInTouchMode="false"
         android:hint="Dish description:"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.94"
         app:layout_constraintStart_toEndOf="@+id/resturant_name_details_fragment"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dish_ingredient_details_fragment" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/dish_name_details_fragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
+        android:layout_width="185dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
         android:editable="false"
         android:hint="Dish name:"
         android:selectAllOnFocus="false"
         android:singleLine="true"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/resturant_name_details_fragment"
-        app:layout_constraintHorizontal_bias="0.944"
+        app:layout_constraintHorizontal_bias="0.94"
         app:layout_constraintStart_toEndOf="@+id/dish_ingredient_details_fragment"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dish_img_details_fragment" />
@@ -104,14 +97,74 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dish_description_details_fragment" />
 
-                <ImageButton
-                    android:id="@+id/backBtnFromDishDtls"
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="TODO"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_back" />
+    <ImageButton
+        android:id="@+id/backBtnFromDishDtls"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="TODO"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_back" />
+
+    <TextView
+        android:id="@+id/dishNameLabel"
+        android:layout_width="185dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:gravity="center_vertical"
+        android:text="Dish Name:"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/dish_name_details_fragment"
+        app:layout_constraintHorizontal_bias="0.06"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dish_img_details_fragment" />
+
+    <TextView
+        android:id="@+id/restNameLabel"
+        android:layout_width="185dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:gravity="center_vertical"
+        android:text="Restuarant name:"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/resturant_name_details_fragment"
+        app:layout_constraintHorizontal_bias="0.06"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dishNameLabel" />
+
+    <TextView
+        android:id="@+id/IngrLabel"
+        android:layout_width="185dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:gravity="center_vertical"
+        android:text="Dish Ingredients:"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/dish_ingredient_details_fragment"
+        app:layout_constraintHorizontal_bias="0.06"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/restNameLabel" />
+
+    <TextView
+        android:id="@+id/DishDescLab"
+        android:layout_width="185dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:gravity="center_vertical"
+        android:text="Dish Description:"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/dish_description_details_fragment"
+        app:layout_constraintHorizontal_bias="0.06"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/IngrLabel" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

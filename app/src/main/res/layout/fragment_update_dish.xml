@@ -9,11 +9,28 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/dishNameLab"
+                android:layout_width="185dp"
+                android:layout_height="62dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:gravity="left|center_vertical"
+                android:text="Dish Name:"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toStartOf="@+id/editDishName"
+                app:layout_constraintHorizontal_bias="0.06"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editImage" />
 
             <ImageView
                 android:id="@+id/editImage"
@@ -40,56 +57,56 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editDishName"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
+                android:layout_width="185dp"
+                android:layout_height="62dp"
+                android:layout_marginStart="32dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="24dp"
                 android:hint="Dish name"
                 android:selectAllOnFocus="false"
                 android:singleLine="false"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.94"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editImage" />
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editResturantName"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
+                android:layout_width="185dp"
+                android:layout_height="62dp"
+                android:layout_marginStart="32dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="24dp"
                 android:focusableInTouchMode="true"
                 android:hint="Resturant name"
                 android:singleLine="true"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.94"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editDishName" />
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editDishIngredient"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
+                android:layout_width="185dp"
+                android:layout_height="62dp"
+                android:layout_marginStart="32dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="24dp"
                 android:focusableInTouchMode="true"
                 android:hint="Dish ingredients"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.94"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editResturantName" />
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editDishDescription"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
+                android:layout_width="185dp"
+                android:layout_height="62dp"
+                android:layout_marginStart="32dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="24dp"
                 android:focusable="auto"
                 android:focusableInTouchMode="true"
                 android:hint="Dish description"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.94"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editDishIngredient" />
 
@@ -124,6 +141,51 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_back" />
+
+            <TextView
+                android:id="@+id/RestNameLab"
+                android:layout_width="185dp"
+                android:layout_height="62dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:gravity="left|center_vertical"
+                android:text="Restuarant Name:"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toStartOf="@+id/editResturantName"
+                app:layout_constraintHorizontal_bias="0.06"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dishNameLab" />
+
+            <TextView
+                android:id="@+id/IngLabel"
+                android:layout_width="185dp"
+                android:layout_height="62dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:gravity="left|center_vertical"
+                android:text="Dish ingredients:"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toStartOf="@+id/editDishIngredient"
+                app:layout_constraintHorizontal_bias="0.06"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/RestNameLab" />
+
+            <TextView
+                android:id="@+id/descLabel"
+                android:layout_width="185dp"
+                android:layout_height="62dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:gravity="left|center_vertical"
+                android:text="Dish Description:"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toStartOf="@+id/editDishDescription"
+                app:layout_constraintHorizontal_bias="0.06"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/IngLabel" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
