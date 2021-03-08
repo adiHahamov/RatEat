@@ -38,10 +38,10 @@ public class Model {
     }
 
     public LiveData<List<User>> getAllUsers() {
-        if(userList == null) {
+//        if(userList == null) {
             userList = modelSql.getAllUsers();
             refreshAllUsers(null);
-        }
+//        }
         return userList;
     }
 
