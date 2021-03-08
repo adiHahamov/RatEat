@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase;
 import com.adiandnoy.RatEat.AppMainActivity;
 import com.adiandnoy.RatEat.MyApplication;
 
-@Database(entities = {Dish.class,User.class}, version = 13)
+@Database(entities = {Dish.class,User.class}, version = 14)
 abstract class AppLocalDbRepository extends RoomDatabase {
         public abstract DishDao dishDao();
         public abstract UserDao userDao();

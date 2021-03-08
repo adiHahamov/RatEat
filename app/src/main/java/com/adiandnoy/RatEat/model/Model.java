@@ -101,21 +101,21 @@ public class Model {
     }
 
     public void refreshAllUsers(final Listener listener) {
-        final SharedPreferences sp = MyApplication.context.getSharedPreferences("TAG", Context.MODE_PRIVATE);
-        long lastUpdateDate = sp.getLong("lastUpdateDate", 0);
+//        final SharedPreferences sp = MyApplication.context.getSharedPreferences("TAG", Context.MODE_PRIVATE);
+//        long lastUpdateDate = sp.getLong("lastUpdateDate", 0);
 
-        modelFirebase.getAllUsers(lastUpdateDate,new GetAllUsersListener() {
+        modelFirebase.getAllUsers(new GetAllUsersListener() {
             @Override
             public void onComplete(List<User> data) {
                 long lastUpdated = 0;
                 for (User user: data) {
                     modelSql.addUser(user, null);
-                    if(user.getLastUpdated() > lastUpdated) {
-                        lastUpdated = user.getLastUpdated();
-                    }
+//                    if(user.getLastUpdated() > lastUpdated) {
+//                        lastUpdated = user.getLastUpdated();
+//                    }
                 }
 
-                sp.edit().putLong("lastUpdateDate", lastUpdated).commit();
+//                sp.edit().putLong("lastUpdateDate", lastUpdated).commit();
                 if(listener != null) {
                     listener.onComplete(data);
                 }

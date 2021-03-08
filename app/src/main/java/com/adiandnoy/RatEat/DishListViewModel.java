@@ -27,16 +27,4 @@ public class DishListViewModel extends ViewModel {
         return userLisr;
     }
 
-//    public LiveData<List<Dish>> getStPersonList(){
-//      stPersonList.;
-//        if (stList != null) {
-//            for (Dish dishP : stList.getValue()) {
-//                if (dishP.getUserID().equals(uid)) {
-//                    stPersonList.getValue().add(dishP);
-//                }
-//            }
-//        }
-//
-//        return stPersonList;
-//    }
 }

@@ -89,16 +89,17 @@ public class ProfileFragment extends Fragment {
 
                 final NavController navController = Navigation.findNavController(view);
 
-                for(User user: viewModel.getUserList().getValue()) {
+                for (User user : viewModel.getUserList().getValue()) {
                     if (user.getId().equals(currentUser.getUid())) {
                         userDtls = user;
                         break;
                     }
                 }
-
-                ProfileFragmentDirections.ActionProfileFragmentToMyDetailsFragment myDtlsAction =
-                        ProfileFragmentDirections.actionProfileFragmentToMyDetailsFragment(userDtls.getName(), userDtls.getLastName(), userDtls.getMail(), userDtls.getPassword(),userDtls.getImageUrl());
-                navController.navigate(myDtlsAction);
+                if (userDtls.getName() != null) {
+                    ProfileFragmentDirections.ActionProfileFragmentToMyDetailsFragment myDtlsAction =
+                            ProfileFragmentDirections.actionProfileFragmentToMyDetailsFragment(userDtls.getName(), userDtls.getLastName(), userDtls.getMail(), userDtls.getPassword(), userDtls.getImageUrl());
+                    navController.navigate(myDtlsAction);
+                }
             }
         });
 
@@ -130,6 +131,8 @@ public class ProfileFragment extends Fragment {
                     }
                 }
                 dishAdapter.data = myDish;
+                dishesList.setAdapter(dishAdapter);
+
 //                dishAdapter.data =viewModel.getList();
             }
         });
@@ -181,20 +184,11 @@ public class ProfileFragment extends Fragment {
                 }
 
                 dishAdapter.data = myDish;
-//                dishAdapter.data = viewModel.getList();
                 dishesList.setAdapter(dishAdapter);
 
                 dishAdapter.setOnClickListener(new myDishPicAdapter.OnItemClickListener() {
                     @Override
                     public void onItemClick(int position) {
-//                        double starsNumber = 0.0;
-//                        if (viewModel.getList().getValue().get(position).getStars() != null){
-//                            starsNumber = viewModel.getList().getValue().get(position).getStars();
-//                        }
-//                        float starsNumberf = (float)starsNumber;
-//                        ProfileFragmentDirections.ActionProfileFragmentToUpdateDishFragment dishUpdAction =
-//                        ProfileFragmentDirections.actionProfileFragmentToUpdateDishFragment(viewModel.getList().getValue().get(position).getImageUrl(),viewModel.getList().getValue().get(position).getDishName(),viewModel.getList().getValue().get(position).getDishDescription(),viewModel.getList().getValue().get(position).getResturantName(),viewModel.getList().getValue().get(position).getIngredients(),starsNumberf);
-//                        Navigation.findNavController(getView()).navigate(dishUpdAction);
                     }
                 });
             }
@@ -204,6 +198,6 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         menu.clear();
-        inflater.inflate(R.menu.top_menu,menu);
+        inflater.inflate(R.menu.top_menu, menu);
     }
 }

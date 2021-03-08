@@ -20,7 +20,6 @@ public class User {
     private String mail;
     private String password;
     private String imageUrl;
-    private Long lastUpdated;
 
     public Map<String,Object> toMap(){
         HashMap<String,Object> result = new HashMap<>();
@@ -30,7 +29,6 @@ public class User {
         result.put("mail",mail);
         result.put("password",password);
         result.put("imageUrl",imageUrl);
-        result.put("lastUpdated", FieldValue.serverTimestamp());
         return result;
     }
 
@@ -42,8 +40,6 @@ public class User {
         mail = (String) map.get("mail");
         password = (String) map.get("password");
         imageUrl = (String) map.get("imageUrl");
-        Timestamp timestamp = (Timestamp)map.get("lastUpdated");
-        lastUpdated = timestamp.getSeconds();
     }
 
 
@@ -96,11 +92,4 @@ public class User {
         this.imageUrl = imageUrl;
     }
 
-    public Long getLastUpdated() {
-        return lastUpdated;
-    }
-
-    public void setLastUpdated(Long lastUpdated) {
-        this.lastUpdated = lastUpdated;
-    }
 }

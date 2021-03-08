@@ -74,12 +74,11 @@ public class ModelFirebase {
                 });
     }
 
-    public void getAllUsers(long lastUpdateDate,Model.GetAllUsersListener listener) {
+    public void getAllUsers(Model.GetAllUsersListener listener) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         List<User> users = new ArrayList<User>();
-        Timestamp ts = new Timestamp(lastUpdateDate,0);
-        db.collection("users").
-                whereGreaterThanOrEqualTo("lastUpdated",ts)
+//        Timestamp ts = new Timestamp(lastUpdateDate,0);
+        db.collection("users")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override

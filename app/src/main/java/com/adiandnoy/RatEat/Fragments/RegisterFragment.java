@@ -133,6 +133,7 @@ public class RegisterFragment extends Fragment {
                                         Model.instance.addUser(user, new Model.AddUserListener() {
                                             @Override
                                             public void onComplete() {
+//                                                Model.instance.getAllUsers();
                                                 final NavController navController = Navigation.findNavController(getView());
                                                 navController.navigate(R.id.studentListFragment);
                                             }
