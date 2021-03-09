@@ -40,9 +40,10 @@ public class DishViewHolder extends RecyclerView.ViewHolder{
         dishImage.setImageResource(R.drawable.dish);
         if (dish.getImageUrl() != null){
             Picasso.get().load(dish.getImageUrl()).placeholder(R.drawable.dish).into(dishImage);
+            dishImage.setRotation(90);
         }
+
         if (dish.getStars() != null) {
-//            ratingBar.
             double d  =  dish.getStars();
             float f = (float)d;
             ratingBar.setRating(f);

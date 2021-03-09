@@ -239,6 +239,7 @@ public class RegisterFragment extends Fragment {
                     if (resultCode == RESULT_OK && data != null) {
                         Bitmap selectedImage = (Bitmap) data.getExtras().get("data");
                         userImage.setImageBitmap(selectedImage);
+                        userImage.setRotation(90);
                     }
 
                     break;
@@ -248,6 +249,7 @@ public class RegisterFragment extends Fragment {
                             InputStream inputStream = getActivity().getContentResolver().openInputStream(data.getData());
                             Bitmap bitmap  = BitmapFactory.decodeStream(inputStream);
                             userImage.setImageBitmap(bitmap);
+                            userImage.setRotation(90);
                         }catch (FileNotFoundException e){
                             e.printStackTrace();
                         }
@@ -256,6 +258,5 @@ public class RegisterFragment extends Fragment {
                     break;
             }
         }
-        userImage.setRotation(90);
     }
 }

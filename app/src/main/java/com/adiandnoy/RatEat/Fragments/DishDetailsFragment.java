@@ -58,6 +58,7 @@ public class DishDetailsFragment extends Fragment {
         Float starsParam =  DishDetailsFragmentArgs.fromBundle(getArguments()).getStars();
 
         Picasso.get().load(imgUrlParam).into(dishImage);
+        dishImage.setRotation(90);
         name.setText(dishNameParam);
         description.setText(dishDescriptionParam);
         resturant.setText(restutantNameParam);

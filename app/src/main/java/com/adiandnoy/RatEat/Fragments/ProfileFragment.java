@@ -147,6 +147,7 @@ public class ProfileFragment extends Fragment {
                         DBuser = user;
 
                         Picasso.get().load(DBuser.getImageUrl()).into(imageViewProfile);
+                        imageViewProfile.setRotation(90);
                     }
                 }
             }

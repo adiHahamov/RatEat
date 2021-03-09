@@ -210,6 +210,6 @@ public class UpdateDishFragment extends Fragment {
                     break;
             }
         }
-        dishImage.setRotation(90);
+//        dishImage.setRotation(90);
     }
 }

@@ -51,6 +51,7 @@ public class AddDishFragment extends Fragment {
     ImageButton editImage;
     ImageView dishImage;
     RatingBar dishStars;
+    Boolean photoSelected = false;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -85,7 +86,6 @@ public class AddDishFragment extends Fragment {
         editImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 editImage();
             }
         });
@@ -111,6 +111,7 @@ public class AddDishFragment extends Fragment {
                 //Save the image
                 BitmapDrawable drawable = (BitmapDrawable) dishImage.getDrawable();
                 Bitmap bitmap = drawable.getBitmap();
+
                 Model.instance.uploadImage(bitmap, dish.getId(), new Model.uploadImageListener() {
                     @Override
                     public void onComplete(String url) {
@@ -218,6 +219,8 @@ public class AddDishFragment extends Fragment {
                     if (resultCode == RESULT_OK && data != null) {
                         Bitmap selectedImage = (Bitmap) data.getExtras().get("data");
                         dishImage.setImageBitmap(selectedImage);
+                        dishImage.setRotation(90);
+                        photoSelected = true;
                     }
 
                     break;
@@ -227,16 +230,17 @@ public class AddDishFragment extends Fragment {
                             InputStream inputStream = getActivity().getContentResolver().openInputStream(data.getData());
                             Bitmap bitmap  = BitmapFactory.decodeStream(inputStream);
                             dishImage.setImageBitmap(bitmap);
+                            dishImage.setRotation(90);
+                            photoSelected = true;
                         }catch (FileNotFoundException e){
                                 e.printStackTrace();
                         }
-
                     }
                     break;
             }
         }
 
-        dishImage.setRotation(90);
+
     }
 
 }

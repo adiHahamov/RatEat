@@ -51,6 +51,7 @@ public class MyDetailsFragment extends Fragment {
         String passwordParam =  MyDetailsFragmentArgs.fromBundle(getArguments()).getPassword();
 
         Picasso.get().load(imgUrlParam).into(profileImg);
+        profileImg.setRotation(90);
         name.setText(nameParam);
         lastName.setText(lastNameParam);
         mail.setText(mailParam);
