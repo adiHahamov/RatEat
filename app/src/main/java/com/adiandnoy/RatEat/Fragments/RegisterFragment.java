@@ -172,29 +172,51 @@ public class RegisterFragment extends Fragment {
     }
     private boolean validateForm() {
         boolean valid = true;
-        String nameS = Objects.requireNonNull(name.getText()).toString();
-        String lastNameS = Objects.requireNonNull(lastName.getText()).toString();
-        String mailS = Objects.requireNonNull(mail.getText()).toString();
-        String passwordS = Objects.requireNonNull(password.getText()).toString();
 
-
-        if(name == null || TextUtils.isEmpty(nameS) ||
-                lastName == null ||  TextUtils.isEmpty(lastNameS) ||
-                mail == null || TextUtils.isEmpty(mailS) ||
-                password == null || TextUtils.isEmpty(passwordS)) {
-            Toast.makeText(getContext(), "Please fill all fields to Sign Up", Toast.LENGTH_SHORT).show();
-           valid = false;
-        }
-        if(nameS.length() > 60) {
-            Toast.makeText(getContext(), "The entered User Name is too long", Toast.LENGTH_SHORT).show();
+        if (name.getText().toString().isEmpty()) {
+            name.setError("Enter a first name");
             valid = false;
         }
-        if(mailS.length() > 200 || !Patterns.EMAIL_ADDRESS.matcher(mailS).matches()) {
-            Toast.makeText(getContext(), "The entered Email is wrong", Toast.LENGTH_SHORT).show();
+
+        if (lastName.getText().toString().isEmpty()) {
+            name.setError("Enter a last name");
             valid = false;
         }
-        if(passwordS.length() < 6) {
-            Toast.makeText(getContext(), "The entered password must be longer than 6 characters", Toast.LENGTH_SHORT).show();
+        if (mail.getText().toString().isEmpty()) {
+            mail.setError("Enter a mail");
+            valid = false;
+        }
+
+        if (password.getText().toString().isEmpty()) {
+            password.setError("Enter a password");
+            valid = false;
+        }
+
+        if(name.getText().toString().length() > 30) {
+            name.setError("The entered name is too long");
+//            Toast.makeText(getContext(), "The entered first name is too long", Toast.LENGTH_SHORT).show();
+            valid = false;
+        }
+
+        if(lastName.getText().toString().length() > 30) {
+            lastName.setError("The entered last name is too long");
+            valid = false;
+        }
+
+//        if(name.getText().toString().length() > 30) {
+//            Toast.makeText(getContext(), "The entered first name is too long", Toast.LENGTH_SHORT).show();
+//            valid = false;
+//        }
+
+        if(mail.getText().toString().length() > 100 || !Patterns.EMAIL_ADDRESS.matcher(mail.getText().toString()).matches()) {
+            mail.setError("The mail is too long or does not fit to mail pattern");
+//            Toast.makeText(getContext(), "The entered Email is wrong", Toast.LENGTH_SHORT).show();
+            valid = false;
+        }
+
+        if(password.getText().toString().length() < 6) {
+            password.setError("The password must contain at least 6 characters");
+//            Toast.makeText(getContext(), "The entered password must be longer than 6 characters", Toast.LENGTH_SHORT).show();
             valid = false;
         }
 
