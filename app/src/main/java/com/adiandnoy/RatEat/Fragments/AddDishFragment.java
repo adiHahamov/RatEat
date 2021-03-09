@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -218,8 +219,9 @@ public class AddDishFragment extends Fragment {
                 case 0:
                     if (resultCode == RESULT_OK && data != null) {
                         Bitmap selectedImage = (Bitmap) data.getExtras().get("data");
-                        dishImage.setImageBitmap(selectedImage);
-                        dishImage.setRotation(90);
+                        Bitmap fixedBitmapRotation = RotateBitmap(selectedImage, 90);
+                        dishImage.setImageBitmap(fixedBitmapRotation);
+//                        dishImage.setRotation(90);
                         photoSelected = true;
                     }
 
@@ -229,8 +231,9 @@ public class AddDishFragment extends Fragment {
                         try {
                             InputStream inputStream = getActivity().getContentResolver().openInputStream(data.getData());
                             Bitmap bitmap  = BitmapFactory.decodeStream(inputStream);
-                            dishImage.setImageBitmap(bitmap);
-                            dishImage.setRotation(90);
+                            Bitmap fixedBitmapRotation = RotateBitmap(bitmap, 90);
+                            dishImage.setImageBitmap(fixedBitmapRotation);
+//                            dishImage.setRotation(90);
                             photoSelected = true;
                         }catch (FileNotFoundException e){
                                 e.printStackTrace();
@@ -241,6 +244,13 @@ public class AddDishFragment extends Fragment {
         }
 
 
+    }
+
+
+    private Bitmap RotateBitmap(Bitmap bitmap, float angle) {
+        Matrix matrix = new Matrix();
+        matrix.postRotate(angle);
+        return Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
     }
 
 }

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -238,8 +239,9 @@ public class RegisterFragment extends Fragment {
                 case 0:
                     if (resultCode == RESULT_OK && data != null) {
                         Bitmap selectedImage = (Bitmap) data.getExtras().get("data");
-                        userImage.setImageBitmap(selectedImage);
-                        userImage.setRotation(90);
+                        Bitmap fixedBitmapRotation = RotateBitmap(selectedImage, 90);
+                        userImage.setImageBitmap(fixedBitmapRotation);
+//                        userImage.setRotation(90);
                     }
 
                     break;
@@ -248,8 +250,9 @@ public class RegisterFragment extends Fragment {
                         try {
                             InputStream inputStream = getActivity().getContentResolver().openInputStream(data.getData());
                             Bitmap bitmap  = BitmapFactory.decodeStream(inputStream);
-                            userImage.setImageBitmap(bitmap);
-                            userImage.setRotation(90);
+                            Bitmap fixedBitmapRotation = RotateBitmap(bitmap, 90);
+                            userImage.setImageBitmap(fixedBitmapRotation);
+//                            userImage.setRotation(90);
                         }catch (FileNotFoundException e){
                             e.printStackTrace();
                         }
@@ -258,5 +261,12 @@ public class RegisterFragment extends Fragment {
                     break;
             }
         }
+    }
+
+
+    private Bitmap RotateBitmap(Bitmap bitmap, float angle) {
+        Matrix matrix = new Matrix();
+        matrix.postRotate(angle);
+        return Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
     }
 }
