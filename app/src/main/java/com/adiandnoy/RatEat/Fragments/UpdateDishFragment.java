@@ -98,6 +98,9 @@ public class UpdateDishFragment extends Fragment {
         saveUpdatedDish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                if (!validateInput()) return;
+
                 Dish dish = new Dish();
                 dish.setId(dishId);
                 dish.setDishName(dishName.getText().toString());
@@ -138,6 +141,32 @@ public class UpdateDishFragment extends Fragment {
 
         return view;
     }
+
+    private boolean validateInput() {
+        boolean valid = true;
+
+        if(dishName.getText().toString().isEmpty()){
+            valid = false;
+            dishName.setError("Enter a name");
+        }
+
+        if(dishDescription.getText().toString().isEmpty()){
+            valid = false;
+            dishDescription.setError("Enter a description");
+        }
+
+        if(resturantName.getText().toString().isEmpty()){
+            valid = false;
+            resturantName.setError("Enter a restaurant");
+        }
+
+        if(dishIngredients.getText().toString().isEmpty()){
+            valid = false;
+            dishIngredients.setError("Enter the ingredients");
+        }
+
+        return valid;
+    };
 
     private void displayFailedError() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
